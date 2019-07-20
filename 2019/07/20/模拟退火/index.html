@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>hh | 灰白骨的blog</title>
+  <title>模拟退火 | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
+  <meta name="description" content="前言模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&amp;yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。">
+<meta name="keywords" content="概率,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hh">
-<meta property="og:url" content="http://yoursite.com/2019/07/19/hh/index.html">
+<meta property="og:title" content="模拟退火">
+<meta property="og:url" content="http://yoursite.com/2019/07/20/模拟退火/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="前言模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&amp;yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-19T04:31:02.187Z">
+<meta property="og:image" content="http://yoursite.com/images/%E9%80%80%E7%81%AB.jpg">
+<meta property="og:updated_time" content="2019-07-20T13:26:38.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hh">
+<meta name="twitter:title" content="模拟退火">
+<meta name="twitter:description" content="前言模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&amp;yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。">
+<meta name="twitter:image" content="http://yoursite.com/images/%E9%80%80%E7%81%AB.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -57,8 +62,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -71,17 +74,13 @@
     			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/huibaigu/" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="mailto:751379374@qq.com" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="bilibili" target="_blank" href="https://space.bilibili.com/240812764" title="bilibili"><i class="icon-bilibili"></i></a>
 		        
@@ -115,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -124,7 +121,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/huibaigu/" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="mailto:751379374@qq.com" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="bilibili" target="_blank" href="https://space.bilibili.com/240812764" title="bilibili"><i class="icon-bilibili"></i></a>
 			        
@@ -139,9 +136,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -156,27 +151,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hh" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-模拟退火" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hh
+      模拟退火
     </h1>
   
 
         
-        <a href="/2019/07/19/hh/" class="archive-article-date">
-  	<time datetime="2019-07-19T04:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-19</time>
+        <a href="/2019/07/20/模拟退火/" class="archive-article-date">
+  	<time datetime="2019-07-20T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。</p>
+<a id="more"></a>
+
+<p>就是说数据是这样的没规律：</p>
+<p><img src="/images/%E9%80%80%E7%81%AB.jpg" alt></p>
+<p><del>图不好勿喷</del></p>
+<p>不好单独说，拿一道题来说吧</p>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><h5 id="洛谷-P3382-【模板】三分法"><a href="#洛谷-P3382-【模板】三分法" class="headerlink" title="洛谷 P3382 【模板】三分法"></a><a href="https://www.luogu.org/problemnew/show/P3382" target="_blank" rel="noopener">洛谷 P3382 【模板】三分法</a></h5><p>给出一个N次函数，保证在范围[l,r]内存在一点x，使得[l,x]上单调增，[x,r]上单调减。试求出x的值。</p>
+<h6 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h6><p>第一行一次包含一个正整数N和两个实数l、r，含义如题目描述所示。</p>
+<p>第二行包含N+1个实数，从高到低依次表示该N次函数各项的系数。</p>
+<h6 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h6><p>输出为一行，包含一个实数，即为x的值。四舍五入保留5位小数。</p>
+<h6 id="输入样例-1：-输出样例-1："><a href="#输入样例-1：-输出样例-1：" class="headerlink" title="输入样例#1：      输出样例#1："></a>输入样例#1：      输出样例#1：</h6><p>3 -0.9981 0.5          -0.41421<br>1 -3 -3 1</p>
+<h6 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h6><p>时空限制：50ms,128M</p>
+<h6 id="数据规模："><a href="#数据规模：" class="headerlink" title="数据规模："></a>数据规模：</h6><p>对于100%的数据：7&lt;=N&lt;=13</p>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>double step=0.98;//退火速度，越小速度越快</p>
+<p>double C=100.0;//温度</p>
+<p>double len=r-l;//答案所在区间</p>
+<p>double ans;//最终答案</p>
+<p>double res;//最终答案对应的y值;</p>
+<h6 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;l,&amp;r);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;p[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	ans=(l+r)/<span class="number">2</span>;<span class="comment">//初始答案</span></span><br><span class="line">	res=js(ans);<span class="comment">//初始值</span></span><br><span class="line">	sa();<span class="comment">//退啊！！！</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.5lf"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="计算答案函数"><a href="#计算答案函数" class="headerlink" title="计算答案函数"></a>计算答案函数</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">js</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> k=<span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		k+=p[i]*<span class="built_in">pow</span>(x,n-i+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="退火函数"><a href="#退火函数" class="headerlink" title="退火函数"></a>退火函数</h6><p>我们在主函数中得到一个f[ans]=res;</p>
+<p>假设最优值在ans左边，就从[l,ans]中随机取一个和res比较</p>
+<p>得到代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x=ans-len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;<span class="comment">//随机在[l,ans]中去一个值</span></span><br><span class="line"><span class="keyword">if</span>(x&gt;=l)<span class="comment">//如果x&lt;l那就没必要算了，∵题目说ans∈[l,r];</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">double</span> dn=js(x);</span><br><span class="line">    <span class="keyword">if</span>(dn&gt;res)<span class="comment">//更新最优值</span></span><br><span class="line">    &#123;</span><br><span class="line">        res=dn;</span><br><span class="line">        ans=x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同上，我们找ans右边,</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> y=ans+len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;<span class="comment">//随机在[ans,r]中去一个值</span></span><br><span class="line"><span class="keyword">if</span>(y&lt;=r)<span class="comment">//如果y&gt;r那就没必要算了，∵题目说ans∈[l,r];</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">double</span> dn=js(y);</span><br><span class="line">    <span class="keyword">if</span>(dn&gt;res)<span class="comment">//更新最优值</span></span><br><span class="line">    &#123;</span><br><span class="line">        res=dn;</span><br><span class="line">        ans=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次处理完我们就把温度降一降</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C*=step;</span><br></pre></td></tr></table></figure>
+
+<p>所以整理得到</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> C=<span class="number">100.0</span>,st=<span class="number">0.6</span><span class="comment">/*此处说明一切。。。*/</span>,len=r-l,x,y;</span><br><span class="line">	<span class="keyword">while</span>(C&gt;=<span class="number">0.000001</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x=ans-len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;</span><br><span class="line">		<span class="keyword">if</span>(x&gt;=l)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> dn=js(x);</span><br><span class="line">			<span class="keyword">if</span>(dn&gt;res)</span><br><span class="line">			&#123;</span><br><span class="line">				res=dn;</span><br><span class="line">				ans=x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		y=ans+len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;</span><br><span class="line">		<span class="keyword">if</span>(y&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> dn=js(y);</span><br><span class="line">			<span class="keyword">if</span>(dn&gt;res)</span><br><span class="line">			&#123;</span><br><span class="line">				res=dn;</span><br><span class="line">				ans=y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		C*=step;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有什么不懂的可以下放评论</p>
+
       
 
       
@@ -215,6 +248,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">概率</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +313,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/19/hh/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/20/模拟退火/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,6 +325,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/20/两个long long类型相拼接/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">两个long long类型相拼接</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -320,7 +378,7 @@ if(true){
   	repo: 'huibaigu.github.io',
   	owner: 'huibaigu',
   	admin: ['huibaigu'],
-  	id: 'Fri Jul 19 2019 12:31:02 GMT+0800',
+  	id: 'Sat Jul 20 2019 20:30:00 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -391,25 +449,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
       
         
     </ul>
@@ -428,6 +478,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -478,27 +540,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.bilibili.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="http://www.bilibili.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>巨佬聚集地</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="http://www.luogu.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>题库</a>
             </li>
           
         </ul>
@@ -506,12 +552,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
-  	  	
-    	</section>
     
   </div>
   
