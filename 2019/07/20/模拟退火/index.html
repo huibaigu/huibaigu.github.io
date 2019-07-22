@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&amp;yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/%E9%80%80%E7%81%AB.jpg">
-<meta property="og:updated_time" content="2019-07-20T13:26:38.847Z">
+<meta property="og:updated_time" content="2019-07-21T09:36:46.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模拟退火">
 <meta name="twitter:description" content="前言模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&amp;yacute;在1985年也独立发明此演算法。模拟退火算法是解决TSP问题的有效方法之一。">
@@ -78,7 +78,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/huibaigu/" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 		        
@@ -119,7 +119,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="https://github.com/huibaigu/" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 			        
@@ -209,6 +209,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> C=<span class="number">100.0</span>,st=<span class="number">0.6</span><span class="comment">/*此处说明一切。。。*/</span>,len=r-l,x,y;</span><br><span class="line">	<span class="keyword">while</span>(C&gt;=<span class="number">0.000001</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x=ans-len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;</span><br><span class="line">		<span class="keyword">if</span>(x&gt;=l)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> dn=js(x);</span><br><span class="line">			<span class="keyword">if</span>(dn&gt;res)</span><br><span class="line">			&#123;</span><br><span class="line">				res=dn;</span><br><span class="line">				ans=x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		y=ans+len*C/<span class="number">100</span>*(rand()%<span class="number">100</span>+<span class="number">1</span>)/<span class="number">100</span>;</span><br><span class="line">		<span class="keyword">if</span>(y&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> dn=js(y);</span><br><span class="line">			<span class="keyword">if</span>(dn&gt;res)</span><br><span class="line">			&#123;</span><br><span class="line">				res=dn;</span><br><span class="line">				ans=y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		C*=step;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>还有什么不懂的可以下放评论</p>
+<p>类似题：</p>
+<p><a href="https://www.luogu.org/problemnew/show/P1337" target="_blank" rel="noopener"><strong>P1337 [JSOI2004]平衡点 / 吊打XXX</strong></a></p>
 
       
 
@@ -489,6 +491,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
@@ -497,11 +507,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">概率</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">目录</a>
               </li>
             
             <div class="clearfix"></div>
