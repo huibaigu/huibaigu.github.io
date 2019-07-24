@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 技巧 | 灰白骨的blog</title>
+  <title>区间DP | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://yoursite.com/tags/技巧/index.html">
+  <meta name="description" content="前言区间简单来说就是一坨； 区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区间DP">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/区间DP/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="前言区间简单来说就是一坨； 区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-24T16:21:13.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="区间DP">
+<meta name="twitter:description" content="前言区间简单来说就是一坨； 区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -141,60 +145,239 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-区间DP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/20/两个long long类型相拼接/" class="archive-article-date">
-  	<time datetime="2019-07-20T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/20/两个long long类型相拼接/">两个long long类型相拼接</a>
+    <h1 class="article-title" itemprop="name">
+      区间DP
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/24/区间DP/" class="archive-article-date">
+  	<time datetime="2019-07-24T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>区间简单来说就是一坨；</p>
+<p>区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。</p>
+<a id="more"></a>
+
+<p><a href="https://www.luogu.org/space/show?uid=110871" target="_blank" rel="noopener">我的洛谷</a>,求一波关注。。。</p>
+<p>本次例题：<a href="https://www.luogu.org/problem/P1005" target="_blank" rel="noopener">矩阵取数游戏</a></p>
+<p>对于一个给定的<em>n</em>×<em>m</em>的矩阵</p>
+<ol>
+<li>每次取数时须从每行各取走一个元素，共<em>n</em>个。经过<em>m</em>次后取完矩阵内所有元素；</li>
+<li>每次取走的各个元素只能是该元素所在行的行首或行尾；</li>
+<li>每次取数都有一个得分值，为每行取数的得分之和，每行取数的得分 = 被取走的元素值2^<em>i</em>，其中<em>i</em>表示第<em>i</em>次取数（从1开始编号）；</li>
+<li>游戏结束总得分为<em>m</em>次取数得分之和。<br>最后输出最大得分</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2 3<br>1 2 3<br>3 4 2</td>
+<td>82</td>
+</tr>
+<tr>
+<td>1 4<br>4 5 0 5</td>
+<td>122</td>
+</tr>
+<tr>
+<td>2 10<br>96 56 54 46 86 12 23 88 80 43<br>16 95 18 29 30 53 88 83 64 67</td>
+<td>316994</td>
+</tr>
+</tbody></table>
+<p>以上有三组样例。</p>
+<p>数据范围说是最大是80*80的矩阵，每个数小于1000，2^80会超过longlong,所以我们用2个longlong拼接</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000000000000<span class="comment">//1后面15个0</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">int127</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> G,D;<span class="comment">//高位，低位</span></span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>((G&lt;x.G)||(G==x.G&amp;&amp;D&lt;x.D))<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//小就返回1</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &gt; (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>((G&gt;x.G)||(G==x.G&amp;&amp;D&gt;x.D))<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//小就返回1</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	int127 <span class="keyword">operator</span> + (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		int127 ans;</span><br><span class="line">		ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">		ans.G=G+x.G+(x.D+D)/mod;</span><br><span class="line">		ans.D=(x.D+D)%mod;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	int127 <span class="keyword">operator</span> + (<span class="keyword">const</span> <span class="keyword">int</span>&amp;x)<span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		int127 ans;</span><br><span class="line">		ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">		ans.G=G+(x+D)/mod;</span><br><span class="line">		ans.D=(x+D)%mod;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	int127 <span class="keyword">operator</span> * (<span class="keyword">const</span> <span class="keyword">int</span>&amp;x)<span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		int127 ans;</span><br><span class="line">		ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">		ans.G=x*G+x*D/mod;</span><br><span class="line">		ans.D=(x*D)%mod;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">int127 k,anser,f[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//k为2^i,anser为最后答案,f为DP数组</span></span><br><span class="line"><span class="keyword">int</span> n,m,dt[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f));<span class="comment">//初始化</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;dt[j]);<span class="comment">//读一行处理一行</span></span><br><span class="line">		k.D=<span class="number">1</span>;</span><br><span class="line">		k.G=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> l=m;l&gt;<span class="number">0</span>;l--)<span class="comment">//慢慢缩小范围，从取最后一个数推到取第一个数</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;=l;a++)k=k*<span class="number">2</span>;<span class="comment">//2^i</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> o=<span class="number">1</span>;o&lt;=l;o++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> j=m-l+o;<span class="comment">//区间大小为m-l</span></span><br><span class="line">				f[o][j]=max(f[o][j<span class="number">-1</span>]+k*dt[j],f[o+<span class="number">1</span>][j]+k*dt[o]);</span><br><span class="line">				<span class="comment">//区间[o,j]的分数=max(区间[o,j-1]的分加上这一次取dt[j]的分，区间[o+1,j]的分加上这一次取dt[o]的分)</span></span><br><span class="line">				<span class="comment">//这一次的分数=上一次的分数加上最左边与最右边；</span></span><br><span class="line">				<span class="comment">//具体就这意思，可能这次例题弄得比较难，不容易理解，多刷些题，慢慢会有感觉的</span></span><br><span class="line">			&#125;</span><br><span class="line">			k.D=<span class="number">1</span>;</span><br><span class="line">			k.G=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">		&#125;</span><br><span class="line">  		anser=anser+f[<span class="number">1</span>][m];<span class="comment">//加上最大值</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(anser.G==<span class="number">0</span>)<span class="built_in">printf</span>(<span class="string">"%lld"</span>,anser.D);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld%lld"</span>,anser.G,anser.D);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="其他例题"><a href="#其他例题" class="headerlink" title="其他例题"></a>其他例题</h6><p><a href="https://www.luogu.org/problem/P1880" target="_blank" rel="noopener">石子合并</a></p>
+<p><a href="https://www.luogu.org/problem/P1040" target="_blank" rel="noopener">加分二叉树</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技巧</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/24/区间DP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/24/线性DP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线性DP</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Wed Jul 24 2019 23:30:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+  
+
 
 
           </div>
@@ -226,9 +409,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

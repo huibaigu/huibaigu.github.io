@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="灰白骨的blog">
 <meta property="og:description" content="前言线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T17:01:42.502Z">
+<meta property="og:updated_time" content="2019-07-24T16:17:38.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性DP">
 <meta name="twitter:description" content="前言线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;">
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #fffff0"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -93,7 +93,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #fffff0"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -168,7 +168,7 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;</p>
 <a id="more"></a>
 
-<p>本次例题：<a href="https://www.luogu.org/problem/P1091" target="_blank" rel="noopener">合唱队形</a>,<a href="https://www.luogu.org/problemnew/show/P1020" target="_blank" rel="noopener">导弹拦截</a></p>
+<p>本次例题：<a href="https://www.luogu.org/problem/P1091" target="_blank" rel="noopener">合唱队形</a>,<a href="https://www.luogu.org/problem/P1020" target="_blank" rel="noopener">导弹拦截</a></p>
 <p>当然，还有更难的题目：<a href="https://www.luogu.org/problem/P2487" target="_blank" rel="noopener">拦截导弹</a>，<a href="https://www.luogu.org/problem/P3205" target="_blank" rel="noopener">合唱队</a></p>
 <h3 id="合唱队形"><a href="#合唱队形" class="headerlink" title="合唱队形"></a>合唱队形</h3><p>题目描述太过冗长，简单来说就是给你N个数，让你丢掉ans个数，使剩下的数符合↗↘的样式，求ans最小值；</p>
 <p>分析：先求以每个数为结尾的最长升序，再求以每个数为开头的最长降序，最后挑个最大的，用n减去再加1(因为这数被减了2次)；</p>
@@ -304,6 +304,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/07/24/区间DP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          区间DP
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/22/状态压缩/" id="article-nav-older" class="article-nav-link-wrap">
@@ -463,11 +472,11 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
               </li>
              
               <li class="article-tag-list-item">
