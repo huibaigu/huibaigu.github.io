@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%862.jpg">
 <meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%863.jpg">
 <meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%864.jpg">
-<meta property="og:updated_time" content="2019-07-27T15:36:44.395Z">
+<meta property="og:updated_time" content="2019-07-27T15:44:08.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树链剖分">
 <meta name="twitter:description" content="前言将一棵树划分成若干条链，用数据结构去维护每条链，复杂度为O(logN)">
@@ -193,11 +193,8 @@
 <td>hson[i]</td>
 <td align="center">第i个点它的子节点中siz最大的点</td>
 </tr>
-<tr>
-<td>代码实现：</td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<p>代码实现：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> f)</span><span class="comment">//当前点，父节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dep[r]=dep[f]+<span class="number">1</span>;<span class="comment">//当前点深度=父节点+1</span></span><br><span class="line">	fa[r]=f;<span class="comment">//当前点的父节点=f</span></span><br><span class="line">	siz[r]++;<span class="comment">//加上自己</span></span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">0</span>;<span class="comment">//子节点中siz最大的有多大</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[r];i;i=e[i].next)<span class="comment">//遍历链接的所有点(包括父节点)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;<span class="comment">//链接点编号</span></span><br><span class="line">		<span class="keyword">if</span>(to==f)<span class="keyword">continue</span>;<span class="comment">//排除父节点</span></span><br><span class="line">		dfs1(to,r);<span class="comment">//dfs1(子节点，把当前点作为父节点)</span></span><br><span class="line">		siz[r]+=siz[to];<span class="comment">//加上这一个子节点的数量</span></span><br><span class="line">		<span class="keyword">if</span>(siz[to]&gt;mx)<span class="comment">//只要这个子节点的数量最多</span></span><br><span class="line">		&#123;<span class="comment">//更新hson</span></span><br><span class="line">			mx=siz[to];<span class="comment">//改变最大数</span></span><br><span class="line">			hson[r]=to;<span class="comment">//改变最大链为to</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以上我们就求到了dep，fa，hson，siz</p>
@@ -511,11 +508,11 @@ gitalk.render('gitalk-container')
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,7 +520,7 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
               </li>
              
               <li class="article-tag-list-item">
