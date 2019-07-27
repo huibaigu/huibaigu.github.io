@@ -6,16 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 目录 | 灰白骨的blog</title>
+  <title>树链剖分 | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://yoursite.com/tags/目录/index.html">
+  <meta name="description" content="前言将一棵树划分成若干条链，用数据结构去维护每条链，复杂度为O(logN)">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树链剖分">
+<meta property="og:url" content="http://yoursite.com/2019/07/27/树链剖分/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="前言将一棵树划分成若干条链，用数据结构去维护每条链，复杂度为O(logN)">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%861.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%862.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%863.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%864.jpg">
+<meta property="og:updated_time" content="2019-07-27T15:36:44.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="树链剖分">
+<meta name="twitter:description" content="前言将一棵树划分成若干条链，用数据结构去维护每条链，复杂度为O(logN)">
+<meta name="twitter:image" content="http://yoursite.com/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%861.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -141,60 +150,277 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-树链剖分" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/简述动态规划/" class="archive-article-date">
-  	<time datetime="2019-07-22T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/简述动态规划/">简述动态规划</a>
+    <h1 class="article-title" itemprop="name">
+      树链剖分
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/27/树链剖分/" class="archive-article-date">
+  	<time datetime="2019-07-27T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将一棵树划分成若干条链，用数据结构去维护每条链，复杂度为O(logN)</p>
+<a id="more"></a>
+<h3 id="树链剖分模板题"><a href="#树链剖分模板题" class="headerlink" title="树链剖分模板题"></a><a href="https://www.luogu.org/problem/P3384" target="_blank" rel="noopener">树链剖分模板题</a></h3><p><img src="/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%861.jpg" alt></p>
+<p>变量：</p>
+<table>
+<thead>
+<tr>
+<th>dep[i]</th>
+<th align="center">第i个点的深度[根节点深度为0]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fa[i]</td>
+<td align="center">第i个点的父节点[根节点的父节点为本身]</td>
+</tr>
+<tr>
+<td>siz[i]</td>
+<td align="center">第i个点下面有多少个点(包括自己)</td>
+</tr>
+<tr>
+<td>hson[i]</td>
+<td align="center">第i个点它的子节点中siz最大的点</td>
+</tr>
+<tr>
+<td>代码实现：</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> f)</span><span class="comment">//当前点，父节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dep[r]=dep[f]+<span class="number">1</span>;<span class="comment">//当前点深度=父节点+1</span></span><br><span class="line">	fa[r]=f;<span class="comment">//当前点的父节点=f</span></span><br><span class="line">	siz[r]++;<span class="comment">//加上自己</span></span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">0</span>;<span class="comment">//子节点中siz最大的有多大</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[r];i;i=e[i].next)<span class="comment">//遍历链接的所有点(包括父节点)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;<span class="comment">//链接点编号</span></span><br><span class="line">		<span class="keyword">if</span>(to==f)<span class="keyword">continue</span>;<span class="comment">//排除父节点</span></span><br><span class="line">		dfs1(to,r);<span class="comment">//dfs1(子节点，把当前点作为父节点)</span></span><br><span class="line">		siz[r]+=siz[to];<span class="comment">//加上这一个子节点的数量</span></span><br><span class="line">		<span class="keyword">if</span>(siz[to]&gt;mx)<span class="comment">//只要这个子节点的数量最多</span></span><br><span class="line">		&#123;<span class="comment">//更新hson</span></span><br><span class="line">			mx=siz[to];<span class="comment">//改变最大数</span></span><br><span class="line">			hson[r]=to;<span class="comment">//改变最大链为to</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上我们就求到了dep，fa，hson，siz</p>
+<p>下面是图</p>
+<p><img src="/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%862.jpg" alt></p>
+<p>下面开始把树变成链，加在线段树上</p>
+<p>变量：</p>
+<table>
+<thead>
+<tr>
+<th>a[i]</th>
+<th>输入的点权</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b[i]</td>
+<td>新增的点的点权</td>
+</tr>
+<tr>
+<td>segi</td>
+<td>增加一个点</td>
+</tr>
+<tr>
+<td>top[i]</td>
+<td>第i个点所属的链的头</td>
+</tr>
+<tr>
+<td>pos[i]</td>
+<td>i节点在线段树中的位置</td>
+</tr>
+</tbody></table>
+<p>代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dfs2</span><span class="params">(rg r,rg tp)</span><span class="comment">//当前节点，这条链的最高点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	segi++;<span class="comment">//增加一个点</span></span><br><span class="line">	b[segi]=a[r];<span class="comment">//把当前节点的值赋值给新增的点</span></span><br><span class="line">	pos[r]=segi;<span class="comment">//当前节点在线段树中的位置</span></span><br><span class="line">	top[r]=tp;<span class="comment">//当前节点所属链的头头</span></span><br><span class="line">	<span class="keyword">if</span>(siz[r]==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//当前节点只有他自己</span></span><br><span class="line">	dfs2(hson[r],tp);<span class="comment">//当前节点最重的一个子节点，这条链的最高点</span></span><br><span class="line">	<span class="keyword">for</span>(rg i=h[r];i;i=e[i].next)<span class="comment">//遍历</span></span><br><span class="line">	&#123;</span><br><span class="line">		rg to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to==fa[r]||to==hson[r])<span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//只要找到的点不是父节点，不是最重点</span></span><br><span class="line">		dfs2(to,to);<span class="comment">//新建一个以to为头的链</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是图</p>
+<p><img src="/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%863.jpg" alt></p>
+<p>线段树中 </p>
+<p><img src="/images/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%864.jpg" alt></p>
+<p>这样我们可以发现以x为根的所有节点就是[pos[x],pos[x]+siz[x]-1],1是减取x本身</p>
+<p>但x到y结点最短路径上所有节点我们怎么更改呢</p>
+<p>可以马上知道if(top[x]==top[y])(dep[x]&gt;dep[y]),那么[pos[x],pos[y]]就是需要更改的区间</p>
+<p>但如果不在同一条链，我们就不停的让x,y移到同一条链上，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(top[x]!=top[y])<span class="comment">//不在同一条链</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(dep[top[x]]&gt;dep[top[y]])swap(x,y);<span class="comment">//让x所在链与根最近</span></span><br><span class="line">    update(<span class="number">1</span>,<span class="number">1</span>,n,pos[top[y]],pos[y],p);<span class="comment">//更新从top(x)到x</span></span><br><span class="line">    y=fa[top[y]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>始终都是移动(((所在链)的头)的深度)最大的;</p>
+<p>下面是总的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> dep[<span class="number">100005</span>],fa[<span class="number">100005</span>],hson[<span class="number">100005</span>],siz[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100005</span>],b[<span class="number">100005</span>],seg[<span class="number">400005</span>],top[<span class="number">100005</span>],pos[<span class="number">100005</span>],segi=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> pluss[<span class="number">400005</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> next,to;&#125;;</span><br><span class="line">edge e[<span class="number">200005</span>];<span class="comment">//无向边</span></span><br><span class="line"><span class="keyword">int</span> n,m,s,v<span class="comment">/*模的数*/</span>,ei,h[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].to=f2;</span><br><span class="line">	e[ei].next=h[f1];</span><br><span class="line">	h[f1]=ei;</span><br><span class="line">&#125;<span class="comment">//前向星</span></span><br><span class="line"><span class="comment">//以下为线段树</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> o)</span></span>&#123;seg[o]=(seg[o&lt;&lt;<span class="number">1</span>]+seg[o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>])%v;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		seg[o]=b[l];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(o&lt;&lt;<span class="number">1</span>,l,mid);</span><br><span class="line">	build(o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">	pushup(o);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pluss[o]==<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	seg[o&lt;&lt;<span class="number">1</span>]+=pluss[o]*(mid-l+<span class="number">1</span>);</span><br><span class="line">	seg[o&lt;&lt;<span class="number">1</span>]%=v;</span><br><span class="line">	pluss[o&lt;&lt;<span class="number">1</span>]+=pluss[o];</span><br><span class="line">	pluss[o&lt;&lt;<span class="number">1</span>]%=v;</span><br><span class="line">	seg[o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=pluss[o]*(r-mid);</span><br><span class="line">	seg[o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]%=v;</span><br><span class="line">	pluss[o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=pluss[o];</span><br><span class="line">	pluss[o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]%=v;</span><br><span class="line">	pluss[o]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;y&gt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		seg[o]+=c*(r-l+<span class="number">1</span>);</span><br><span class="line">		seg[o]%=v;</span><br><span class="line">		pluss[o]+=c;</span><br><span class="line">		pluss[o]%=v;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	pushdown(o,l,r);</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)update(o&lt;&lt;<span class="number">1</span>,l,mid,x,y,c);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid)update(o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y,c);</span><br><span class="line">	pushup(o);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;y&gt;=r)<span class="keyword">return</span> seg[o]%v;</span><br><span class="line">	pushdown(o,l,r);</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)ans+=query(o&lt;&lt;<span class="number">1</span>,l,mid,x,y);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid)ans=(ans+query(o&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y))%v;</span><br><span class="line">	<span class="keyword">return</span> ans%v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//以上为线段树</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//以下为树刨</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updateTree</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> p)</span><span class="comment">//从x到y增加p</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(top[x]!=top[y])<span class="comment">//不在同一条链</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]]&gt;dep[top[y]])swap(x,y);<span class="comment">//让x所在链与根最近</span></span><br><span class="line">		update(<span class="number">1</span>,<span class="number">1</span>,n,pos[top[y]],pos[y],p);<span class="comment">//更新从top(x)到x</span></span><br><span class="line">		y=fa[top[y]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x]&gt;dep[y])swap(x,y);</span><br><span class="line">	update(<span class="number">1</span>,<span class="number">1</span>,n,pos[x],pos[y],p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">queryTree</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span><span class="comment">//查询从x到y的值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(top[x]!=top[y])<span class="comment">//不在同一条链</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]]&gt;dep[top[y]])swap(x,y);<span class="comment">//让x所在链与根最近</span></span><br><span class="line">		ans=(ans+query(<span class="number">1</span>,<span class="number">1</span>,n,pos[top[y]],pos[y]))%v;</span><br><span class="line">		y=fa[top[y]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x]&gt;dep[y])swap(x,y);</span><br><span class="line">	ans+=query(<span class="number">1</span>,<span class="number">1</span>,n,pos[x],pos[y]);</span><br><span class="line">	<span class="keyword">return</span> ans%v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> f)</span><span class="comment">//当前节点，父节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dep[r]=dep[f]+<span class="number">1</span>;<span class="comment">//当前深度=上一个+1</span></span><br><span class="line">	fa[r]=f;<span class="comment">//父节点=f</span></span><br><span class="line">	siz[r]++;<span class="comment">//加上自己的重量</span></span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">0</span>;<span class="comment">//最重的链有多重</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[r];i;i=e[i].next)<span class="comment">//遍历链接的所有点</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to==f)<span class="keyword">continue</span>;</span><br><span class="line">		dfs1(to,r);</span><br><span class="line">		siz[r]+=siz[to];<span class="comment">//加上其中一个儿子的重量</span></span><br><span class="line">		<span class="keyword">if</span>(siz[to]&gt;mx)<span class="comment">//只要to的重量最大</span></span><br><span class="line">		&#123;</span><br><span class="line">			mx=siz[to];<span class="comment">//改变最大</span></span><br><span class="line">			hson[r]=to;<span class="comment">//改变最重链为to</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> tp)</span><span class="comment">//当前节点，这条链的最高点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	segi++;<span class="comment">//增加一个点</span></span><br><span class="line">	b[segi]=a[r];<span class="comment">//把当前节点的值赋值给新增的点</span></span><br><span class="line">	pos[r]=segi;<span class="comment">//当前节点在线段树中的位置</span></span><br><span class="line">	top[r]=tp;<span class="comment">//当前节点所属链的头头</span></span><br><span class="line">	<span class="keyword">if</span>(siz[r]==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//当前节点只有他自己</span></span><br><span class="line">	dfs2(hson[r],tp);<span class="comment">//当前节点最重的一个子节点，这条链的最高点</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[r];i;i=e[i].next)<span class="comment">//遍历</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to==fa[r]||to==hson[r])<span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//只要找到的点不是父节点，不是最重点</span></span><br><span class="line">		dfs2(to,to);<span class="comment">//新建一个以to为头头的链</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=read();m=read();s=read();v=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=read();</span><br><span class="line">		a[i]%=v;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read();</span><br><span class="line">		add(f1,f2);</span><br><span class="line">		add(f2,f1);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs1(s,s);</span><br><span class="line">	dfs2(s,s);</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read();</span><br><span class="line">		<span class="keyword">if</span>(f1==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=read(),y=read(),z=read();</span><br><span class="line">			updateTree(x,y,z);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f1==<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=read(),y=read();</span><br><span class="line">			write(queryTree(x,y));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f1==<span class="number">3</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=read(),z=read();</span><br><span class="line">			update(<span class="number">1</span>,<span class="number">1</span>,n,pos[x],pos[x]+siz[x]<span class="number">-1</span>,z);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f1==<span class="number">4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=read();</span><br><span class="line">			write(query(<span class="number">1</span>,<span class="number">1</span>,n,pos[x],pos[x]+siz[x]<span class="number">-1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有不懂的可以下面问我</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/27/树链剖分/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/25/背包问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">背包问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Sat Jul 27 2019 23:30:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+  
+
 
 
           </div>
@@ -226,9 +452,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
