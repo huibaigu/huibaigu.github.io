@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 概率 | 灰白骨的blog</title>
+  <title>分块 | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://yoursite.com/tags/概率/index.html">
+  <meta name="description" content="分块，就是把大的方块划分成一个一个的小方块，简而言之就是线段树的弱化版。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分块">
+<meta property="og:url" content="http://yoursite.com/2019/07/28/分块/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="分块，就是把大的方块划分成一个一个的小方块，简而言之就是线段树的弱化版。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-28T12:49:02.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="分块">
+<meta name="twitter:description" content="分块，就是把大的方块划分成一个一个的小方块，简而言之就是线段树的弱化版。">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -141,36 +145,146 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-分块" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/20/模拟退火/" class="archive-article-date">
-  	<time datetime="2019-07-20T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/20/模拟退火/">模拟退火</a>
+    <h1 class="article-title" itemprop="name">
+      分块
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/28/分块/" class="archive-article-date">
+  	<time datetime="2019-07-28T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>分块，就是把大的方块划分成一个一个的小方块，简而言之就是线段树的弱化版。</p>
+<a id="more"></a>
+
+<p><a href="https://www.luogu.org/problem/P3372" target="_blank" rel="noopener">[模板]线段树 1</a></p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>block_max</td>
+<td>每一块最多有多少</td>
+</tr>
+<tr>
+<td>block_num[i]</td>
+<td>第i个数据是哪一块的</td>
+</tr>
+<tr>
+<td>sum[i]</td>
+<td>第i个块的数据和</td>
+</tr>
+<tr>
+<td>a[i]</td>
+<td>初始数据</td>
+</tr>
+<tr>
+<td>pl[i]</td>
+<td>第i个块所有数据的增添量</td>
+</tr>
+</tbody></table>
+<p>我们一半把block_max设置为总数的根号，即：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">block_max=<span class="built_in">sqrt</span>(n);</span><br></pre></td></tr></table></figure>
+
+<p>但有些题目如果更改一下block_max的大小会有出奇的效果</p>
+<p>那怎么判断第i个数属于那一块呢</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">block_num[i]=(i<span class="number">-1</span>)/block_max+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>因为我让第一块编号为1，所以+1；</p>
+<p>在输入时就对sum[i]初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum[block_num[i]]+=a[i];</span><br></pre></td></tr></table></figure>
+
+<p>输入弄完了，那怎么对其区间[l,r]进行增添数据呢</p>
+<h6 id="增添数据"><a href="#增添数据" class="headerlink" title="增添数据"></a>增添数据</h6><p>无非就2种情况</p>
+<p>1.block_num[l]==block_num[r];</p>
+<p>这种情况可以这样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)</span><br><span class="line">&#123;</span><br><span class="line">    a[i]+=p;</span><br><span class="line">&#125;</span><br><span class="line">sum[block_num[l]]+=(r-l+<span class="number">1</span>)*p;</span><br></pre></td></tr></table></figure>
+
+<p>2.block_num[l]!=block_num[r];</p>
+<p>对于l所在块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=block_max*block_num[l];i++)</span><br><span class="line">&#123;</span><br><span class="line">    a[i]+=p;</span><br><span class="line">&#125;</span><br><span class="line">sum[block_num[l]]+=(block_max*block_num[l]-l+<span class="number">1</span>)*p;</span><br></pre></td></tr></table></figure>
+
+<p>对于r所在块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">&#123;</span><br><span class="line">    a[i]+=p;</span><br><span class="line">    sum[block_num[i]]+=p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里(block_num[r]-1)*block_max+1是为了求r所在块的第一个数据的编号</p>
+<p>对于l,r之间的块可以这样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    sum[i]+=block_max*p;</span><br><span class="line">    pl[i]+=p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整合：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=min(r,block_num[l]*block_max);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]+=p;</span><br><span class="line">	&#125;</span><br><span class="line">    sum[block_num[l]]+=(min(r,block_num[l]*block_max)-l+<span class="number">1</span>)*p;</span><br><span class="line">	<span class="keyword">if</span>(block_num[l]!=block_num[r])<span class="comment">//l,r不在同一块</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]+=p;</span><br><span class="line">		&#125;</span><br><span class="line">        sum[block_num[r]]+=(r-(block_num[r]<span class="number">-1</span>)*block_max)*p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[i]+=block_max*p;</span><br><span class="line">		pl[i]+=p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h6><p>和修改数据一样</p>
+<p>对于l所在块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=min(r,block_num[l]*block_max);i++)</span><br><span class="line">&#123;</span><br><span class="line">    ans+=a[i];</span><br><span class="line">&#125;</span><br><span class="line">ans+=pl[block_num[l]]*(min(r,block_num[l]*block_max)-l+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>对于r所在块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">&#123;</span><br><span class="line">    ans+=a[i];</span><br><span class="line">]</span><br><span class="line">ans+=pl[block_num[r]]*(r-(block_num[r]<span class="number">-1</span>)*block_max);</span><br></pre></td></tr></table></figure>
+
+<p>对于l,r中间块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">	ans+=sum[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是整合：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=min(r,block_num[l]*block_max);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ans+=pl[block_num[l]]*(min(r,block_num[l]*block_max)-l+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(block_num[l]!=block_num[r])<span class="comment">//不在同一块</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">		&#123;</span><br><span class="line">		    ans+=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=pl[block_num[r]]*(r-(block_num[r]<span class="number">-1</span>)*block_max);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=sum[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是这次的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)s=getchar();</span><br><span class="line">    <span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,m,block_max,a[<span class="number">100055</span>],block_num[<span class="number">100055</span>],pl[<span class="number">500</span>],sum[<span class="number">500</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> l,<span class="keyword">long</span> <span class="keyword">long</span> r,<span class="keyword">long</span> <span class="keyword">long</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=l;i&lt;=min(r,block_num[l]*block_max);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]+=p;</span><br><span class="line">	&#125;</span><br><span class="line">    sum[block_num[l]]+=(min(r,block_num[l]*block_max)-l+<span class="number">1</span>)*p;</span><br><span class="line">	<span class="keyword">if</span>(block_num[l]!=block_num[r])<span class="comment">//l,r不在同一块</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]+=p;</span><br><span class="line">		&#125;</span><br><span class="line">        sum[block_num[r]]+=(r-(block_num[r]<span class="number">-1</span>)*block_max)*p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[i]+=block_max*p;</span><br><span class="line">		pl[i]+=p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> l,<span class="keyword">long</span> <span class="keyword">long</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=l;i&lt;=min(r,block_num[l]*block_max);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ans+=pl[block_num[l]]*(min(r,block_num[l]*block_max)-l+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(block_num[l]!=block_num[r])<span class="comment">//不在同一块</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=(block_num[r]<span class="number">-1</span>)*block_max+<span class="number">1</span>;i&lt;=r;i++)</span><br><span class="line">		&#123;</span><br><span class="line">		    ans+=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=pl[block_num[r]]*(r-(block_num[r]<span class="number">-1</span>)*block_max);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=block_num[l]+<span class="number">1</span>;i&lt;=block_num[r]<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=sum[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();</span><br><span class="line">	block_max=<span class="built_in">sqrt</span>(n);<span class="comment">//每一个块大小</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=read();</span><br><span class="line">		block_num[i]=(i<span class="number">-1</span>)/block_max+<span class="number">1</span>;<span class="comment">//第i个数属于哪一块</span></span><br><span class="line">		sum[block_num[i]]+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> f1=read();</span><br><span class="line">		<span class="keyword">if</span>(f1==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span> f2=read(),f3=read(),f4=read();</span><br><span class="line">			add(f2,f3,f4);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span> f2=read(),f3=read();</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,query(f2,f3));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>码风巨丑，见谅</p>
+<p>有不懂的可以下面问我</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -178,27 +292,134 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">概率</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/28/分块/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/27/树链剖分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树链剖分</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Sun Jul 28 2019 17:00:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+  
+
 
 
           </div>
@@ -230,9 +451,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
