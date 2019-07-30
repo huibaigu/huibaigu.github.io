@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 技巧 | 灰白骨的blog</title>
+  <title>LCA | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://yoursite.com/tags/技巧/index.html">
+  <meta name="description" content="LCA(最近公共祖先)，指在有根树中，找出某两个结点u和v最近的公共祖先">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCA">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/LCA/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="LCA(最近公共祖先)，指在有根树中，找出某两个结点u和v最近的公共祖先">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/LCA.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LCA.jpg">
+<meta property="og:updated_time" content="2019-07-30T15:23:33.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="LCA">
+<meta name="twitter:description" content="LCA(最近公共祖先)，指在有根树中，找出某两个结点u和v最近的公共祖先">
+<meta name="twitter:image" content="http://yoursite.com/images/LCA.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -141,60 +148,301 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LCA" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/20/两个long long类型相拼接/" class="archive-article-date">
-  	<time datetime="2019-07-20T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/20/两个long long类型相拼接/">两个long long类型相拼接</a>
+    <h1 class="article-title" itemprop="name">
+      LCA
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/30/LCA/" class="archive-article-date">
+  	<time datetime="2019-07-30T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LCA(最近公共祖先)，指在有根树中，找出某两个结点u和v最近的公共祖先</p>
+<a id="more"></a>
+
+<p>例题：<a href="https://www.luogu.org/problem/P3379" target="_blank" rel="noopener">【模板】最近公共祖先（LCA）</a></p>
+<p>求LCA我知道2种方法，一种是在线的，一种是离线；</p>
+<p>在线的是用倍增求的，离线的是用tanjar的算法求的</p>
+<p>离线的求完后就不能在更改了；</p>
+<p>而在线的求完，可以在最后加点之类的；</p>
+<h3 id="离线-tanjar"><a href="#离线-tanjar" class="headerlink" title="离线(tanjar)"></a>离线(tanjar)</h3><p>先上图：</p>
+<p><img src="/images/LCA.jpg" alt></p>
+<p>这张图中</p>
+<p>lca(5,16)=2</p>
+<p>lca(2,6)=2</p>
+<p>lca(11,16)=9</p>
+<p>这不难发现规律，很快我们便总结出一个暴力办法:</p>
+<p>以lca(5,16)为例,让他们先爬到深度一样的位置上，即5-&gt;5,16-&gt;7;</p>
+<p>然后让两边一起往上爬，知道相遇,</p>
+<p>5-&gt;5-&gt;3-&gt;2</p>
+<p>16-&gt;7-&gt;4-&gt;2</p>
+<p>当然，这暴力会T飞掉，开了o2都没用。</p>
+<p>下面我介绍tanjar做法</p>
+<p>这种做法会用到并查集</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th align="center">变量作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>used[i]</td>
+<td align="center">i节点找没找过</td>
+</tr>
+<tr>
+<td>ans[i]</td>
+<td align="center">第i次询问的答案</td>
+</tr>
+</tbody></table>
+<p>1.先建立两个链表，一个为树的各条边(根据题目建双向)，另一个是查询的两节点(建双向)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[Maxn];</span><br><span class="line"><span class="keyword">int</span> head[Maxn],ei=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ei++;</span><br><span class="line">    e[ei].to=y;</span><br><span class="line">    e[ei].next=head[x];</span><br><span class="line">    head[x]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-=-=-=-=-=-=--=-=--=-=-=-=-=-=--=-=--=-=</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next,id;<span class="comment">//id：这次询问在总询问的第几个</span></span><br><span class="line">&#125;e2[Maxn];</span><br><span class="line"><span class="keyword">int</span> head2[Maxn],ei2=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ei2++;</span><br><span class="line">    e2[ei2].id=id;</span><br><span class="line">    e2[ei2].to=y;</span><br><span class="line">    e2[ei2].next=head2[x];</span><br><span class="line">    head2[x]=ei2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.根开始进行一遍深搜(可能没有根，这是可以随意选一个点为根)。</p>
+<p>3.先把该节点i的f设置为自身，然后搜索与此节点相连的所有点j，如果点j没被搜索过，则进入点j的搜索，搜索完后把点j的f指向i。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">used[f]=<span class="number">1</span>;<span class="comment">//搜索的打上标记</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[f];i;i=e[i].next)</span><br><span class="line">&#123;<span class="comment">//找节点</span></span><br><span class="line">    <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">    <span class="keyword">if</span>(used[to]==<span class="number">1</span>)<span class="comment">//找过的节点不在找</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    lca(to);</span><br><span class="line">    uion(f,to);<span class="comment">//这里把to节点弄完后才把to的findf指向f是为了找最近的，而不是找到to上面的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.深搜完一点i后，开始判断节点i与另一节点j是否满足求LCA的条件，如何判断呢，只需要看j是否被搜索过，如果被搜索过，那么把ans[id]=findf(to)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head2[f];i;i=e2[i].next)</span><br><span class="line">&#123;<span class="comment">//找关系</span></span><br><span class="line">    <span class="keyword">int</span> to=e2[i].to;</span><br><span class="line">    <span class="keyword">if</span>(used[to]==<span class="number">1</span>)<span class="comment">//只要这个点和关系点都被找过，那么他们的lca就是findf(to),这时的findf(to)还没有指向更高一级</span></span><br><span class="line">    &#123;</span><br><span class="line">        ans[e2[i].id]=findf(to);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.搜索完所有点，自动退出初始的第一个深搜，输出结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);<span class="comment">//输出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是总的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度：O(n+m)。</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 5000100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxm 5000100</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,root;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[Maxn];</span><br><span class="line"><span class="keyword">int</span> head[Maxn],ei=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ei++;</span><br><span class="line">    e[ei].to=y;</span><br><span class="line">    e[ei].next=head[x];</span><br><span class="line">    head[x]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next,id;<span class="comment">//id：这次询问在总询问的第几个</span></span><br><span class="line">&#125;e2[Maxn];</span><br><span class="line"><span class="keyword">int</span> head2[Maxn],ei2=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ei2++;</span><br><span class="line">    e2[ei2].id=id;</span><br><span class="line">    e2[ei2].to=y;</span><br><span class="line">    e2[ei2].next=head2[x];</span><br><span class="line">    head2[x]=ei2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//--------------------------------------并查集</span></span><br><span class="line"><span class="keyword">int</span> f[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findf</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f[x]==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f[x]=findf(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uion</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x=findf(x);</span><br><span class="line">    y=findf(y);</span><br><span class="line">    <span class="keyword">if</span>(x!=y)</span><br><span class="line">    &#123;</span><br><span class="line">        f[y]=x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-----------------------------------</span></span><br><span class="line"><span class="keyword">int</span> used[Maxn];</span><br><span class="line"><span class="keyword">int</span> ans[Maxm];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    used[f]=<span class="number">1</span>;<span class="comment">//搜索的打上标记</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[f];i;i=e[i].next)</span><br><span class="line">    &#123;<span class="comment">//找节点</span></span><br><span class="line">        <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(used[to]==<span class="number">1</span>)<span class="comment">//找过的节点不在找</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        lca(to);</span><br><span class="line">        uion(f,to);<span class="comment">//这里把to节点弄完后才把to的findf指向f是为了找最近的，而不是找到to上面的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head2[f];i;i=e2[i].next)</span><br><span class="line">    &#123;<span class="comment">//找关系</span></span><br><span class="line">        <span class="keyword">int</span> to=e2[i].to;</span><br><span class="line">        <span class="keyword">if</span>(used[to]==<span class="number">1</span>)<span class="comment">//只要这个点和关系点都被找过，那么他们的lca就是findf(to),这时的findf(to)还没有指向更高一级</span></span><br><span class="line">        &#123;</span><br><span class="line">            ans[e2[i].id]=findf(to);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;root);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;=n<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y);<span class="comment">//建边</span></span><br><span class="line">        add(y,x);<span class="comment">//无向图</span></span><br><span class="line">    &#125;<span class="comment">//输入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,a,b;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);<span class="comment">//需要搜索的lca(a,b);</span></span><br><span class="line">        add2(a,b,i);<span class="comment">//建立关系</span></span><br><span class="line">        add2(b,a,i);<span class="comment">//建立关系</span></span><br><span class="line">    &#125;</span><br><span class="line">    lca(root);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);<span class="comment">//输出</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在线-倍增"><a href="#在线-倍增" class="headerlink" title="在线(倍增)"></a>在线(倍增)</h3><p>先上图：</p>
+<p><img src="/images/LCA.jpg" alt></p>
+<p>围绕倍增的思想，原来的暴力算法是一步一步往上爬，这次我们四步二步一步的爬</p>
+<p>也就是虫子向上爬2^i^次=虫子向上2^(i-1)^再向上2^(i-1)^，即2^i^=2^(i-1)^+2^(i-1)^;</p>
+<p>先打个log2的表,比直接取log2快</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qulog</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		lg[i]=lg[i/<span class="number">2</span>]+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th align="center">变量作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lg[i]</td>
+<td align="center">log<del>2</del>^i^的值</td>
+</tr>
+<tr>
+<td>dep[i]</td>
+<td align="center">第i节点的深度，根深度为1</td>
+</tr>
+<tr>
+<td>f(i)(j)</td>
+<td align="center">第i个点向上2^j^的节点</td>
+</tr>
+</tbody></table>
+<p>然后我们从根节点开始，求每一个点的dep与f(i)(0)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[g];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(dep[to]!=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">		dep[to]=dep[g]+<span class="number">1</span>;</span><br><span class="line">		f[to][<span class="number">0</span>]=g;</span><br><span class="line">		dfs(to);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们开始补全f数组，怎么补全呢？</p>
+<p>利用2^i^=2^(i-1)^+2^(i-1)^;进行补全</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qu2x</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30</span>;i++)<span class="comment">//根据有多少点来判断i&lt;=什么</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=N;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(f[j][i<span class="number">-1</span>]==<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];<span class="comment">//j向上2^i次=j向上2^(i-1)再向上2^(i-1)</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>准备工作做完了，开始lca函数了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span><span class="comment">//求lca的节点编号</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[f1]&gt;dep[f2])swap(f1,f2);<span class="comment">//让f2在f1下面</span></span><br><span class="line">	f2=tiao(f2,dep[f2]-dep[f1]);<span class="comment">//先让f2的深度==f1</span></span><br><span class="line">	<span class="keyword">if</span>(f2==f1)<span class="keyword">return</span> f1;<span class="comment">//特判</span></span><br><span class="line">    <span class="comment">//---------------------------------二分</span></span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=dep[f1]<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(tiao(f1,mid)==tiao(f2,mid))<span class="comment">//只要跳到同一点了，那么就不动</span></span><br><span class="line">		&#123;</span><br><span class="line">			r=mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			l=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tiao(f1,r);</span><br><span class="line">    <span class="comment">//---------------------------------二分</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面二分处也可以改为这样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=lg[dep[f1]]<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[f1][i]!=fa[f2][i])</span><br><span class="line">    &#123;</span><br><span class="line">	    f1=f[f1][i];</span><br><span class="line">        f2=f[f2][i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> f[f1][<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<p>那么tiao函数怎么写呢，观察，假如，一个点向上跳5步，可以先跳2^2^再跳2^0^步,且2^t^=(1&lt;&lt;t)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">tiao</span><span class="params">(<span class="keyword">int</span> g,<span class="keyword">int</span> jibu)</span><span class="comment">//g点向上跳jibu步</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(jibu)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> t=lg[jibu];</span><br><span class="line">		g=f[g][t];<span class="comment">//g向上跳2^t步</span></span><br><span class="line">		jibu=jibu-(<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> g;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整理得到</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> next,to;&#125;;</span><br><span class="line">edge e[<span class="number">1000003</span>];</span><br><span class="line"><span class="keyword">int</span> ei,head[<span class="number">500003</span>],N,M,S,lg[<span class="number">500003</span>],dep[<span class="number">500003</span>],f[<span class="number">500003</span>][<span class="number">33</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].to=f2;</span><br><span class="line">	e[ei].next=head[f1];</span><br><span class="line">	head[f1]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qulog</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		lg[i]=lg[i/<span class="number">2</span>]+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[g];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(dep[to]!=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">		dep[to]=dep[g]+<span class="number">1</span>;</span><br><span class="line">		f[to][<span class="number">0</span>]=g;</span><br><span class="line">		dfs(to);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qu2x</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=N;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(f[j][i<span class="number">-1</span>]==<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];<span class="comment">//j向上2^i次=j向上2^(i-1)再向上2^(i-1)</span></span><br><span class="line">			<span class="comment">//2^i=2^(i-1)+2^(i-1)</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">tiao</span><span class="params">(<span class="keyword">int</span> g,<span class="keyword">int</span> jibu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(jibu)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> t=lg[jibu];</span><br><span class="line">		g=f[g][t];<span class="comment">//g向上跳2^t步</span></span><br><span class="line">		jibu=jibu-(<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> g;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[f1]&gt;dep[f2])swap(f1,f2);</span><br><span class="line">	f2=tiao(f2,dep[f2]-dep[f1]);</span><br><span class="line">	<span class="keyword">if</span>(f2==f1)<span class="keyword">return</span> f1;</span><br><span class="line">    <span class="comment">//--------------------第一种----------------------</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=lg[dep[f1]]<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="keyword">if</span>(fa[f1][i]!=fa[f2][i])</span><br><span class="line">	    &#123;</span><br><span class="line">		    f1=f[f1][i];</span><br><span class="line">	        f2=f[f2][i];</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[f1][<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//--------------------第一种----------------------</span></span><br><span class="line">    <span class="comment">//--------------------第2种----------------------</span></span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=dep[f1]<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(tiao(f1,mid)==tiao(f2,mid))</span><br><span class="line">		&#123;</span><br><span class="line">			r=mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			l=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tiao(f1,r);</span><br><span class="line">    <span class="comment">//--------------------第2种----------------------</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;N,&amp;M,&amp;S);</span><br><span class="line">	dep[S]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,f1,f2;i&lt;N;i++)</span><br><span class="line">	&#123;</span><br><span class="line">        scnaf(<span class="string">"%d%d"</span>,&amp;f1,&amp;f2);</span><br><span class="line">		add(f1,f2);<span class="comment">//无向图，建两次</span></span><br><span class="line">		add(f2,f1);</span><br><span class="line">	&#125;</span><br><span class="line">	qulog();</span><br><span class="line">	dfs(S);</span><br><span class="line">	qu2x();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lca(f1,f2));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有什么不懂可以在下面问我</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技巧</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/30/LCA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/28/离散化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">离散化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Tue Jul 30 2019 23:30:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+  
+
 
 
           </div>
@@ -226,9 +474,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
