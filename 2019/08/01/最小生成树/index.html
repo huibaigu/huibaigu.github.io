@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>状态压缩 | 灰白骨的blog</title>
+  <title>最小生成树(kruskal)与(prim) | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
+  <meta name="description" content="最小生成树，就是在无向图G中，有n个节点，找到n-1条边，是n个节点相连，且边权最小；">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="状态压缩">
-<meta property="og:url" content="http://yoursite.com/2019/07/22/状态压缩/index.html">
+<meta property="og:title" content="最小生成树(kruskal)与(prim)">
+<meta property="og:url" content="http://yoursite.com/2019/08/01/最小生成树/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
-<meta property="og:description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
+<meta property="og:description" content="最小生成树，就是在无向图G中，有n个节点，找到n-1条边，是n个节点相连，且边权最小；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-24T16:18:09.003Z">
+<meta property="og:updated_time" content="2019-08-01T16:08:26.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="状态压缩">
-<meta name="twitter:description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
+<meta name="twitter:title" content="最小生成树(kruskal)与(prim)">
+<meta name="twitter:description" content="最小生成树，就是在无向图G中，有n个节点，找到n-1条边，是n个节点相连，且边权最小；">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -145,46 +145,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-状态压缩" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-最小生成树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      状态压缩
+      最小生成树(kruskal)与(prim)
     </h1>
   
 
         
-        <a href="/2019/07/22/状态压缩/" class="archive-article-date">
-  	<time datetime="2019-07-22T15:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+        <a href="/2019/08/01/最小生成树/" class="archive-article-date">
+  	<time datetime="2019-08-01T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>状态压缩[状压],是通过2进制来优化空间的一种方法</p>
+        <p>最小生成树，就是在无向图G中，有n个节点，找到n-1条边，是n个节点相连，且边权最小；</p>
 <a id="more"></a>
-<p>一个int是2^31 -1,写成二进制就是0111 1111 1111 1111 1111 1111 1111 1111,总共31个‘1’。</p>
-<p>当我们储存一个数据只有很少的状态时就可以通过状压实现优化内存。</p>
-<p>举例：</p>
-<p>​    在20件物品中，分别编号1~20，</p>
-<h6 id="1-选上某物品："><a href="#1-选上某物品：" class="headerlink" title="1.选上某物品："></a>1.选上某物品：</h6><p>平时我们：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use[编号]=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>而现在就可以用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=(use|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure>
-<p>比如说我要选第5件:</p>
-<p>那么use就会变成0001 0000</p>
-<p>在选上第2件</p>
-<p>use: 0001 0010</p>
-<h6 id="2-选了多少个，"><a href="#2-选了多少个，" class="headerlink" title="2.选了多少个，"></a>2.选了多少个，</h6><p>就是统计1的个数，很简单：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)</span><br><span class="line">    &#123;</span><br><span class="line">        p+=(x&amp;<span class="number">1</span>);</span><br><span class="line">        x&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="3-如果要一下子全部选呢"><a href="#3-如果要一下子全部选呢" class="headerlink" title="3.如果要一下子全部选呢"></a>3.如果要一下子全部选呢</h6><p>可以用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=<span class="number">1</span>&lt;&lt;(<span class="number">20</span>+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
-<h6 id="4-不选某一个物品"><a href="#4-不选某一个物品" class="headerlink" title="4.不选某一个物品"></a>4.不选某一个物品</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.u</span>se|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.u</span>se&amp;(~(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">get:</span><br><span class="line"><span class="number">1.</span>求出x的第k位:(x&gt;&gt;(k<span class="number">-1</span>))&amp;<span class="number">1</span>;</span><br><span class="line"><span class="built_in">set</span>:</span><br><span class="line"><span class="number">1.</span>把x的第k位改为<span class="number">1</span>:x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.</span>把x的第k位改为<span class="number">0</span>:<span class="number">1.</span>x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line">		  或者:<span class="number">2.</span>x&amp;(~(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)));</span><br><span class="line"><span class="number">3.</span><span class="keyword">if</span>(x&amp;(x&lt;&lt;<span class="number">1</span>)!=<span class="number">0</span>)就表示有相临的‘<span class="number">1</span>’;如<span class="number">0110</span>或<span class="number">1011</span></span><br><span class="line"><span class="number">4.</span>取k位全是<span class="number">1</span>:<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
+<p>可以用kruskal与prim算法实现</p>
+<p><a href="https://www.luogu.org/problem/P3366" target="_blank" rel="noopener">最小生成树模板</a></p>
+<h3 id="kruskal"><a href="#kruskal" class="headerlink" title="kruskal"></a>kruskal</h3><p>废话不多说，直接上代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> ei,n,m,ans,cnt,f[<span class="number">5005</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> v,from,to;&#125;;</span><br><span class="line">edge e[<span class="number">200005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ei++;</span><br><span class="line">	e[ei].from=x;</span><br><span class="line">	e[ei].to=y;</span><br><span class="line">	e[ei].v=v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findf</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[x]==<span class="number">0</span>)<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> findf(f[x]);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unio</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f1=findf(x),f2=findf(y);</span><br><span class="line">	<span class="keyword">if</span>(f1==f2)<span class="keyword">return</span>;</span><br><span class="line">	f[f1]=f2;</span><br><span class="line">	ans+=v;</span><br><span class="line">	cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(edge f1,edge f2)</span></span>&#123;<span class="keyword">return</span> f1.v&lt;f2.v;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruskal</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sort(e+<span class="number">1</span>,e+<span class="number">1</span>+ei,cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=ei;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		unio(e[i].from,e[i].to,e[i].v);</span><br><span class="line">		<span class="keyword">if</span>(cnt==n<span class="number">-1</span>)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read(),f3=read();</span><br><span class="line">		add(f1,f2,f3);</span><br><span class="line">	&#125;</span><br><span class="line">	Kruskal();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出来Kruskal的简单</p>
+<p>1.存边</p>
+<p>2.把所有边以边权由小到大排序(sort)</p>
+<p>3.从边权最小的开始取，只要边连接的两点不在同一个树上就通过并查集连起来，并把这条边的边权加入ans;</p>
+<p>4.当cnt==n-1时就结束程序，因为最小生成树的边为节点数-1。</p>
+<h3 id="prim"><a href="#prim" class="headerlink" title="prim"></a>prim</h3><p>相比于Kruskal,prim比较麻烦。</p>
+<p>prim,是以任意节点开始，找出与这点连接的所有边，最后取最小的，找到新节点后继续，需要维护一个数组，记录其他没找过的点到找过的点的最短距离</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cnt</td>
+<td>已经找到的边数量</td>
+</tr>
+<tr>
+<td>dis[i]</td>
+<td>i点到找过的点的最短距离</td>
+</tr>
+<tr>
+<td>ans</td>
+<td>最小生成树的边权和</td>
+</tr>
+<tr>
+<td>user[i]</td>
+<td>i点找没找过</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>先存边</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> to,v,next;&#125;e[<span class="number">400005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">    <span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)s=getchar();</span><br><span class="line">    <span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>),s=getchar();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++ei].v=v;</span><br><span class="line">    e[ei].to=y;</span><br><span class="line">    e[ei].next=head[x];</span><br><span class="line">    head[x]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,f1,f2,f3;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        f1=read(),f2=read(),f3=read();</span><br><span class="line">        add(f1,f2,f3),</span><br><span class="line">		add(f2,f1,f3);</span><br><span class="line">    &#125;</span><br><span class="line">    prim();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据prim写法，维护dis数组，把根定为1，先设为极大值，在根据节点1更新dis数值，只更新与1相连的节点的dis值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">memset</span>(dis,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[<span class="number">1</span>];i;i=e[i].next)dis[e[i].to]=min(dis[e[i].to],e[i].v);</span><br></pre></td></tr></table></figure>
+<p>更新完，我们找dis非0且最小的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> minn=<span class="number">0x7f7f7f7f</span>;</span><br><span class="line">user[now]=<span class="number">1</span>;</span><br><span class="line">dis[now]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(!user[i]&amp;&amp;minn&gt;dis[i])</span><br><span class="line">    &#123;</span><br><span class="line">        minn=dis[i];</span><br><span class="line">        now=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>now即为我们下次的根了</p>
+<p>根据now更新dis,并把之前的now与这个now直接的边权加上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ans+=minn;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=e[i].next)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">    dis[to]=min(e[i].v,dis[to]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后不可能一直这样下去，有一个边界</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(cnt&lt;n<span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面才是prim函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[<span class="number">1</span>];i;i=e[i].next)dis[e[i].to]=min(dis[e[i].to],e[i].v);</span><br><span class="line">    <span class="keyword">while</span>(cnt&lt;n<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> minn=<span class="number">0x7f7f7f7f</span>;</span><br><span class="line">        user[now]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!user[i]&amp;&amp;minn&gt;dis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                minn=dis[i];</span><br><span class="line">                now=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans+=minn;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=e[i].next)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">            dis[to]=min(e[i].v,dis[to]);</span><br><span class="line">        &#125;</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外还有堆优化，可以更快，这里就不写的</p>
+<h3 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h3><p>从之前的代码中可以看出，kruskal的复杂度是根据边的多少来的，而prim是根据点来的，Prim在稠密图中比Kruskal优，在稀疏图中比Kruskal劣。</p>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>还有一种叫Borůvka (Sollin)求最小生成树的，在维基百科上有<a href="https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm" target="_blank" rel="noopener">地址</a>,不过需要翻墙才能看。</p>
+<p>有什么不懂可以在下面问我</p>
 
       
 
@@ -285,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/22/状态压缩/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/01/最小生成树/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,18 +337,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/24/线性DP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          线性DP
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/22/简述动态规划/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">简述动态规划</div>
+    <a href="/2019/07/30/LCA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LCA</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -359,7 +388,7 @@ if(true){
   	repo: 'huibaigu.github.io',
   	owner: 'huibaigu',
   	admin: ['huibaigu'],
-  	id: 'Mon Jul 22 2019 23:00:00 GMT+0800',
+  	id: 'Thu Aug 01 2019 23:30:00 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 

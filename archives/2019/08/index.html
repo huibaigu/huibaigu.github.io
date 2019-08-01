@@ -6,20 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>状态压缩 | 灰白骨的blog</title>
+  <title>Archives: 2019/8 | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
-<meta name="keywords" content="算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="状态压缩">
-<meta property="og:url" content="http://yoursite.com/2019/07/22/状态压缩/index.html">
+  <meta name="keywords" content="灰白骨">
+<meta property="og:type" content="website">
+<meta property="og:title" content="灰白骨的blog">
+<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
-<meta property="og:description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-24T16:18:09.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="状态压缩">
-<meta name="twitter:description" content="前言状态压缩[状压],是通过2进制来优化空间的一种方法">
+<meta name="twitter:title" content="灰白骨的blog">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -145,85 +141,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-状态压缩" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      状态压缩
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/01/最小生成树/" class="archive-article-date">
+  	<time datetime="2019-08-01T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/01/最小生成树/">最小生成树(kruskal)与(prim)</a>
     </h1>
   
 
-        
-        <a href="/2019/07/22/状态压缩/" class="archive-article-date">
-  	<time datetime="2019-07-22T15:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>状态压缩[状压],是通过2进制来优化空间的一种方法</p>
-<a id="more"></a>
-<p>一个int是2^31 -1,写成二进制就是0111 1111 1111 1111 1111 1111 1111 1111,总共31个‘1’。</p>
-<p>当我们储存一个数据只有很少的状态时就可以通过状压实现优化内存。</p>
-<p>举例：</p>
-<p>​    在20件物品中，分别编号1~20，</p>
-<h6 id="1-选上某物品："><a href="#1-选上某物品：" class="headerlink" title="1.选上某物品："></a>1.选上某物品：</h6><p>平时我们：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use[编号]=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>而现在就可以用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=(use|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure>
-<p>比如说我要选第5件:</p>
-<p>那么use就会变成0001 0000</p>
-<p>在选上第2件</p>
-<p>use: 0001 0010</p>
-<h6 id="2-选了多少个，"><a href="#2-选了多少个，" class="headerlink" title="2.选了多少个，"></a>2.选了多少个，</h6><p>就是统计1的个数，很简单：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)</span><br><span class="line">    &#123;</span><br><span class="line">        p+=(x&amp;<span class="number">1</span>);</span><br><span class="line">        x&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="3-如果要一下子全部选呢"><a href="#3-如果要一下子全部选呢" class="headerlink" title="3.如果要一下子全部选呢"></a>3.如果要一下子全部选呢</h6><p>可以用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=<span class="number">1</span>&lt;&lt;(<span class="number">20</span>+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
-<h6 id="4-不选某一个物品"><a href="#4-不选某一个物品" class="headerlink" title="4.不选某一个物品"></a>4.不选某一个物品</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.u</span>se|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.u</span>se&amp;(~(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">get:</span><br><span class="line"><span class="number">1.</span>求出x的第k位:(x&gt;&gt;(k<span class="number">-1</span>))&amp;<span class="number">1</span>;</span><br><span class="line"><span class="built_in">set</span>:</span><br><span class="line"><span class="number">1.</span>把x的第k位改为<span class="number">1</span>:x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.</span>把x的第k位改为<span class="number">0</span>:<span class="number">1.</span>x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line">		  或者:<span class="number">2.</span>x&amp;(~(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)));</span><br><span class="line"><span class="number">3.</span><span class="keyword">if</span>(x&amp;(x&lt;&lt;<span class="number">1</span>)!=<span class="number">0</span>)就表示有相临的‘<span class="number">1</span>’;如<span class="number">0110</span>或<span class="number">1011</span></span><br><span class="line"><span class="number">4.</span>取k位全是<span class="number">1</span>:<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -235,139 +182,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/22/状态压缩/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/24/线性DP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          线性DP
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/22/简述动态规划/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">简述动态规划</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'd835e15585d9970ef6b3',
-  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
-  	repo: 'huibaigu.github.io',
-  	owner: 'huibaigu',
-  	admin: ['huibaigu'],
-  	id: 'Mon Jul 22 2019 23:00:00 GMT+0800',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-
-  
-
+    
 
 
           </div>
@@ -399,8 +226,8 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
