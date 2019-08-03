@@ -9,14 +9,14 @@
   <title>线性DP | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;">
-<meta name="keywords" content="算法">
+<meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性DP">
 <meta property="og:url" content="http://yoursite.com/2019/07/24/线性DP/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
 <meta property="og:description" content="前言线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-24T16:17:38.298Z">
+<meta property="og:updated_time" content="2019-08-03T09:34:33.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性DP">
 <meta name="twitter:description" content="前言线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;">
@@ -24,7 +24,7 @@
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="img/751379374.jpg">
   
   <link rel="stylesheet" type="text/css" href="/./main.469b5e.css">
   <style type="text/css">
@@ -76,6 +76,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
 					<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="bilibili" target="_blank" href="https://space.bilibili.com/240812764" title="bilibili"><i class="icon-bilibili"></i></a>
@@ -115,6 +117,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
 						<a class="qq" target="_blank" href="/img/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="bilibili" target="_blank" href="https://space.bilibili.com/240812764" title="bilibili"><i class="icon-bilibili"></i></a>
@@ -229,13 +233,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -388,6 +403,23 @@ gitalk.render('gitalk-container')
         <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>
         </span>
         -->
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("07/20/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
         <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
       </div>
     </div>
@@ -482,15 +514,23 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技巧</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">关于</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,7 +538,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">目录</a>
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
             
             <div class="clearfix"></div>
