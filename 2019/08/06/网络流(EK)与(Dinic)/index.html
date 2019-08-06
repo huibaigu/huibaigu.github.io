@@ -6,16 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: 目录 | 灰白骨的blog</title>
+  <title>网络最大流(EK)与(Dinic) | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://yoursite.com/categories/目录/index.html">
+  <meta name="description" content="这次讲的是最大流算法；">
+<meta name="keywords" content="网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络最大流(EK)与(Dinic)">
+<meta property="og:url" content="http://yoursite.com/2019/08/06/网络流(EK)与(Dinic)/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="这次讲的是最大流算法；">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/网络最大流1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/网络最大流2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/网络最大流3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/网络最大流4.jpg">
+<meta property="og:updated_time" content="2019-08-06T07:08:55.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="网络最大流(EK)与(Dinic)">
+<meta name="twitter:description" content="这次讲的是最大流算法；">
+<meta name="twitter:image" content="http://yoursite.com/images/网络最大流1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -145,71 +154,303 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-网络流(EK)与(Dinic)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/简述动态规划/" class="archive-article-date">
-  	<time datetime="2019-07-22T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/简述动态规划/">简述动态规划</a>
+    <h1 class="article-title" itemprop="name">
+      网络最大流(EK)与(Dinic)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/06/网络流(EK)与(Dinic)/" class="archive-article-date">
+  	<time datetime="2019-08-06T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这次讲的是最大流算法；</p>
+<a id="more"></a>
+<p>在一个有向图中，令a为源点,b为汇点，从a到b的最大流量为网络最大流,通俗的来讲，把a点当成一个管子的一端，b点当成另一个管子的一段，从a进去连着有许多大小不一的管子，最大流就是从a管无限多的水，问b点有多少水出来</p>
+<p>模板题<a href="https://www.luogu.org/problem/P3376" target="_blank" rel="noopener">网络最大流</a></p>
+<p>如图:</p>
+<p><img src="/images/网络最大流1.jpg" alt></p>
+<p>这时a-&gt;b的网络流为70,即A-&gt;7-&gt;8-&gt;B为10，A-&gt;1-&gt;2-&gt;B为10，A-&gt;4-&gt;6-&gt;5-&gt;B为30，A-&gt;4-&gt;3-&gt;5-&gt;B为20。</p>
+<p>我们发现，通过一遍深搜就能得出答案，但如果是下面这幅图，深搜就可能为199，即a-&gt;1-&gt;2-&gt;b为1，a-&gt;1-&gt;b为99，a-&gt;2-&gt;b为99。</p>
+<p><img src="/images/网络最大流2.jpg" alt></p>
+<p>那么怎么跳过这种错误呢，我们把搜过的边全部反向建一条，把正边流过的流量弄到反向边里，即上图,a-&gt;1-&gt;2-&gt;b为1，那么，我把a-&gt;1减1，让1-&gt;a加1，让1-&gt;2减1,让2-&gt;1加1,让2-&gt;b减1,让b-&gt;2加1,这样就可以避免这种情况，但是，就像上边图一样，一但图中有很多这种情况，那就是T的飞起，所以我们在之前加上找最短路，让每一次更新的路径都是最短路，所以就有了EK算法。</p>
+<h3 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h3><p>所谓EK算法，就是通过一边bfs,找到最短路，然后更新一遍最短路，如此往复。</p>
+<p>下面是模板</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dep[i]</td>
+<td>第i个点在最短路中距离源点相隔(dep[i]-1)个点</td>
+</tr>
+<tr>
+<td>f[i]</td>
+<td>第i个点在最短路中的父节点是谁</td>
+</tr>
+<tr>
+<td>mn[i]</td>
+<td>第i个点得到的流量为多少</td>
+</tr>
+<tr>
+<td>u[i]</td>
+<td>第i个点在没在堆栈(queue)里</td>
+</tr>
+<tr>
+<td>id[i]</td>
+<td>第i个点在最短路中的正边是那一条，id[i]^1即在最短路中的负边是那一条</td>
+</tr>
+<tr>
+<td>T</td>
+<td>汇点，即终点</td>
+</tr>
+<tr>
+<td>S</td>
+<td>源点，即起点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="built_in">memset</span>(dep,<span class="number">0</span>,<span class="keyword">sizeof</span>(dep));</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">	<span class="built_in">memset</span>(mn,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(mn));</span><br><span class="line">	<span class="built_in">memset</span>(u,<span class="number">0</span>,<span class="keyword">sizeof</span>(u));</span><br><span class="line">	<span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">	dep[S]=<span class="number">1</span>;</span><br><span class="line">	qu.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		u[f1]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(f1==T)<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=e[i].to;</span><br><span class="line">			<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dep[t]!=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			dep[t]=dep[f1]+<span class="number">1</span>;</span><br><span class="line">			id[t]=i;</span><br><span class="line">			f[t]=f1;</span><br><span class="line">			mn[t]=min(mn[f1],e[i].v);</span><br><span class="line">			<span class="keyword">if</span>(u[t]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				qu.push(t);</span><br><span class="line">				u[t]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(t==T)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dep[T]!=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next=T;</span><br><span class="line">	<span class="keyword">while</span>(f[next]!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		e[id[next]].v-=mn[T];</span><br><span class="line">		e[id[next]^<span class="number">1</span>].v+=mn[T];</span><br><span class="line">		next=f[next];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mn[T];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EK</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())ans+=update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而存边是通过链式前向星存储,由于要存两条边，这里有个优化，即如果正边为1,反边就为1^1即2,所以ei为奇数就行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> next,to,v;&#125;e[<span class="number">200003</span>];</span><br><span class="line"><span class="keyword">int</span> ei=<span class="number">1</span>,head[<span class="number">10003</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].v=v;</span><br><span class="line">	e[ei].next=head[x];</span><br><span class="line">	e[ei].to=y;</span><br><span class="line">	head[x]=ei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这样又有一个问题，每次找到的最短路中dep[T]都是一样的，那该怎么优化，可以找到所有长度一样的最短路，全部都更新一遍，再找更长的，在更新，于是就有了Dinic算法</p>
+<h3 id="Dinic算法"><a href="#Dinic算法" class="headerlink" title="Dinic算法"></a>Dinic算法</h3><p>所谓Dinic算法，就是在EK算法的基础上，通过一遍bfs找到最短路，然后根据最短路跑一遍dfs找到所有长度相等的最短路,然后更新</p>
+<p>下面是模板</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dep[i]</td>
+<td>第i个点在最短路中距离源点相隔(dep[i]-1)个点</td>
+</tr>
+<tr>
+<td>from</td>
+<td>这点的编号</td>
+</tr>
+<tr>
+<td>maxflow</td>
+<td>流到这点的流量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="built_in">memset</span>(dep,<span class="number">0</span>,<span class="keyword">sizeof</span>(dep));</span><br><span class="line">	qu.push(S);</span><br><span class="line">    dep[S]=<span class="number">1</span>;</span><br><span class="line">    qu.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">			<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dep[to]!=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			qu.push(to);</span><br><span class="line">			dep[to]=dep[f1]+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dep[T]!=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> maxflow)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(from==T)<span class="keyword">return</span> maxflow;</span><br><span class="line">	<span class="keyword">int</span> flow=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[from];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dep[to]!=dep[from]+<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> res=dfs(to,min(maxflow-flow,e[i].v));</span><br><span class="line">		<span class="keyword">if</span>(res==<span class="number">0</span>)dep[to]=<span class="number">0</span>;</span><br><span class="line">		e[i].v-=res;</span><br><span class="line">		e[i^<span class="number">1</span>].v+=res;</span><br><span class="line">		flow+=res;</span><br><span class="line">		<span class="keyword">if</span>(flow==maxflow)<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (bfs())</span><br><span class="line">    &#123;</span><br><span class="line">		 ans+=dfs(S,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还是通过链式前向星存储</p>
+<p>在做题时，最重要的是要找源点和汇点，大多时候题目中都没有直接告诉，那么就需要自己去设，如图</p>
+<p><img src="/images/网络最大流3.jpg" alt></p>
+<p>例题：<a href="https://www.luogu.org/problem/P2756" target="_blank" rel="noopener">飞行员配对方案问题</a>     <a href="https://www.luogu.org/problem/P3386" target="_blank" rel="noopener">二分图匹配</a></p>
+<p>而有些时候也需要拆点，即把同一个点拆乘几个，如图</p>
+<p><img src="/images/网络最大流4.jpg" alt></p>
+<p>例题：<a href="https://www.luogu.org/problem/P1231" target="_blank" rel="noopener">教辅的组成</a></p>
+<p>还有比较综合的：<a href="https://www.luogu.org/problem/P2763" target="_blank" rel="noopener">试题库问题</a></p>
+<p>有什么不懂可以下面问我</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">网络流</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/目录//" class="article-tag-list-link color3">目录</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/06/网络流(EK)与(Dinic)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/04/DP例题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DP例题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Tue Aug 06 2019 13:00:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+  
+
 
 
           </div>
@@ -261,10 +502,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
