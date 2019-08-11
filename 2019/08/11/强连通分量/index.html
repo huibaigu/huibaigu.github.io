@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Tarjan1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/Tarjan1.jpg">
-<meta property="og:updated_time" content="2019-08-11T13:44:29.778Z">
+<meta property="og:updated_time" content="2019-08-11T15:08:54.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="强连通分量">
 <meta name="twitter:description" content="强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。">
@@ -172,7 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。<br><a id="more"></a><br>简单来说就是图中有环，即<br><img src="/images/Tarjan1.jpg" alt><br>而tarjan使用来找环的<br><a href="https://www.luogu.org/problem/P3387" target="_blank" rel="noopener">缩点</a><br>思路:输入-&gt;tarjan-&gt;把环缩成一个点-&gt;spfa(dijskal)-&gt;输出-&gt;AC<br>首先输入</p>
+        <p>强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。<br><a id="more"></a><br>简单来说就是图中有环，即<br><img src="/images/Tarjan1.jpg" alt><br>而tarjan使用来找环的<br><a href="https://www.luogu.org/problem/P3387" target="_blank" rel="noopener">缩点</a><br>思路:输入-&gt;tarjan-&gt;把环缩成一个点-&gt;spfa(dijskra)-&gt;输出-&gt;AC<br>首先输入</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,form;</span><br><span class="line">&#125;;</span><br><span class="line">edge e[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].to=f2;</span><br><span class="line">	e[ei].next=head[f1];</span><br><span class="line">	e[ei].form=f1;</span><br><span class="line">	head[f1]=ei;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ss=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(ss&lt;<span class="string">'0'</span>||ss&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ss==<span class="string">'-'</span>)f=<span class="number">-1</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ss&gt;=<span class="string">'0'</span>&amp;&amp;ss&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+ss-<span class="string">'0'</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)v[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read();</span><br><span class="line">		add(f1,f2);</span><br><span class="line">	&#125;</span><br><span class="line">	dotarjan();</span><br><span class="line">	spfa();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[teamlist]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>下一步就是tarjan找环缩点了</p>
 <div class="table-container">
@@ -366,6 +366,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/12/最短路/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          最短路
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/11/二分图匹配/" id="article-nav-older" class="article-nav-link-wrap">
@@ -562,19 +571,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">网络流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">关于</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">网络流</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +603,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
             
             <div class="clearfix"></div>
