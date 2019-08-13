@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>离散化 | 灰白骨的blog</title>
+  <title>费用流 | 灰白骨的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="离散化，即不在改变数据相对大小的条件下，对数据进行相应的缩小">
-<meta name="keywords" content="离散化">
+  <meta name="description" content="费用流是在最大流的基础上求出费用，满足费用最大或最小">
+<meta name="keywords" content="费用流">
 <meta property="og:type" content="article">
-<meta property="og:title" content="离散化">
-<meta property="og:url" content="http://yoursite.com/2019/07/28/离散化/index.html">
+<meta property="og:title" content="费用流">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/费用流/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
-<meta property="og:description" content="离散化，即不在改变数据相对大小的条件下，对数据进行相应的缩小">
+<meta property="og:description" content="费用流是在最大流的基础上求出费用，满足费用最大或最小">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-03T09:33:22.958Z">
+<meta property="og:updated_time" content="2019-08-13T15:48:43.639Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="离散化">
-<meta name="twitter:description" content="离散化，即不在改变数据相对大小的条件下，对数据进行相应的缩小">
+<meta name="twitter:title" content="费用流">
+<meta name="twitter:description" content="费用流是在最大流的基础上求出费用，满足费用最大或最小">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -149,40 +149,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-离散化" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-费用流" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      离散化
+      费用流
     </h1>
   
 
         
-        <a href="/2019/07/28/离散化/" class="archive-article-date">
-  	<time datetime="2019-07-28T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+        <a href="/2019/08/13/费用流/" class="archive-article-date">
+  	<time datetime="2019-08-13T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>离散化，即不在改变数据相对大小的条件下，对数据进行相应的缩小</p>
+        <p>费用流是在最大流的基础上求出费用，满足费用最大或最小</p>
 <a id="more"></a>
-<p>例如：</p>
-<p>这里有6个数</p>
-<p>5613,15611,616,1 64,6164,6164离散化后就成了3,5,2,1,4,4</p>
-<p>方法很简单</p>
-<p>1.排序//用sort</p>
-<p>2.删除重复元素//用unique</p>
-<p>3.求元素离散化后对应的值//用lower_bound或者upper_bound</p>
-<p>//lower_bound会从0开始，upper_bound则从1开始</p>
-<p>a为原始序列，b为离散后的序列</p>
-<p>代码也很简单</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line"><span class="keyword">int</span> size=unique(a+<span class="number">1</span>,a+<span class="number">1</span>+n)-a<span class="number">-1</span>;<span class="comment">//size为离散化后元素个数</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">b[i]=upper_bound(a+<span class="number">1</span>,a+<span class="number">1</span>+size,a[i])-a;<span class="comment">//a[i]经离散化后对应的值</span></span><br></pre></td></tr></table></figure>
-<p>有不懂的可以下面问我</p>
+<p>由于是求费用，而费用相同的路流量会不一样，所以这里用EK算法</p>
+<p><a href="https://www.luogu.org/problem/P3381" target="_blank" rel="noopener">最小费用最大流</a></p>
+<p>看题，二话不说先敲个EK上去</p>
+<p>但是怎么建图，根据最大流，会有一个流量为0的反向边供程序‘反悔’，那么怎么使反悔那部分和之前那部分的费用抵消，我们建反向边的时候就把费用设置成正向的相反数，这样一正一反就抵消了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> next,to,v,w;&#125;e[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> ansa,ansb;</span><br><span class="line"><span class="keyword">int</span> n,m,S,T;</span><br><span class="line"><span class="keyword">int</span> ei=<span class="number">1</span>,head[<span class="number">5005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e[++ei].v=v;</span><br><span class="line">	e[ei].next=head[x];</span><br><span class="line">	e[ei].to=y;</span><br><span class="line">	e[ei].w=w;</span><br><span class="line">	head[x]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> x=<span class="number">0</span>;<span class="keyword">register</span> <span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();S=read();T=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,u,v,w,f;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		u=read();v=read();w=read();f=read();</span><br><span class="line">		add(u,v,w,f);</span><br><span class="line">		add(v,u,<span class="number">0</span>,-f);</span><br><span class="line">	&#125;</span><br><span class="line">	EK();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d"</span>,ansa,ansb);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么EK我们怎么写呢，还是按照之前没费用的一样，由于之前是求从S到T最短的，这里就把最短改为最便宜的或者最贵的，其他的不变</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next=T;</span><br><span class="line">	<span class="keyword">while</span>(fa[next]!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		e[id[next]].v-=mn[T];</span><br><span class="line">		e[id[next]^<span class="number">1</span>].v+=mn[T];</span><br><span class="line">		next=fa[next];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">EK</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		update();</span><br><span class="line">		ansb+=dis[T]*mn[T];</span><br><span class="line">		ansa+=mn[T];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要变的只有bfs部分</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dis[i]</td>
+<td>到达i时的最小费用</td>
+</tr>
+<tr>
+<td>mn[i]</td>
+<td>到达i时的流量</td>
+</tr>
+<tr>
+<td>fa[i]</td>
+<td>在最小费用路中的父节点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	<span class="built_in">memset</span>(mn,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(mn));</span><br><span class="line">	<span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">	dis[S]=<span class="number">0</span>;</span><br><span class="line">	fa[S]=<span class="number">0</span>;</span><br><span class="line">	qu.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		user[f1]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=e[i].to;</span><br><span class="line">			<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dis[t]&lt;=dis[f1]+e[i].w)<span class="keyword">continue</span>;</span><br><span class="line">			dis[t]=dis[f1]+e[i].w;</span><br><span class="line">			id[t]=i;</span><br><span class="line">			fa[t]=f1;</span><br><span class="line">			mn[t]=min(mn[f1],e[i].v);</span><br><span class="line">			<span class="keyword">if</span>(user[t]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				qu.push(t);</span><br><span class="line">				user[t]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dis[T]!=<span class="number">0x7f7f7f7f</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是整合的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> next,to,v,w;&#125;e[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> dis[<span class="number">5005</span>],fa[<span class="number">5005</span>],mn[<span class="number">5005</span>],user[<span class="number">5005</span>],id[<span class="number">5005</span>];</span><br><span class="line"><span class="keyword">int</span> ansa,ansb;</span><br><span class="line"><span class="keyword">int</span> n,m,S,T;</span><br><span class="line"><span class="keyword">int</span> ei=<span class="number">1</span>,head[<span class="number">5005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e[++ei].v=v;</span><br><span class="line">	e[ei].next=head[x];</span><br><span class="line">	e[ei].to=y;</span><br><span class="line">	e[ei].w=w;</span><br><span class="line">	head[x]=ei;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> x=<span class="number">0</span>;<span class="keyword">register</span> <span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	<span class="built_in">memset</span>(mn,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(mn));</span><br><span class="line">	<span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">	dis[S]=<span class="number">0</span>;</span><br><span class="line">	fa[S]=<span class="number">0</span>;</span><br><span class="line">	qu.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		user[f1]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=e[i].to;</span><br><span class="line">			<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dis[t]&lt;=dis[f1]+e[i].w)<span class="keyword">continue</span>;</span><br><span class="line">			dis[t]=dis[f1]+e[i].w;</span><br><span class="line">			id[t]=i;</span><br><span class="line">			fa[t]=f1;</span><br><span class="line">			mn[t]=min(mn[f1],e[i].v);</span><br><span class="line">			<span class="keyword">if</span>(user[t]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				qu.push(t);</span><br><span class="line">				user[t]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dis[T]!=<span class="number">0x7f7f7f7f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next=T;</span><br><span class="line">	<span class="keyword">while</span>(fa[next]!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		e[id[next]].v-=mn[T];</span><br><span class="line">		e[id[next]^<span class="number">1</span>].v+=mn[T];</span><br><span class="line">		next=fa[next];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">EK</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		update();</span><br><span class="line">		ansb+=dis[T]*mn[T];</span><br><span class="line">		ansa+=mn[T];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();S=read();T=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,u,v,w,f;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		u=read();v=read();w=read();f=read();</span><br><span class="line">		add(u,v,w,f);</span><br><span class="line">		add(v,u,<span class="number">0</span>,-f);</span><br><span class="line">	&#125;</span><br><span class="line">	EK();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d"</span>,ansa,ansb);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说了最小费用，那么最大费用怎么办呢，还是一样，bfs时求最大费用，也可以转换为最小费用来做</p>
+<p>转化为最小费用：建边的时候把正向边建成负的，反向边建成正的跑一遍最小费用就OK了</p>
+<p>求最大费用:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0xc0</span>,<span class="keyword">sizeof</span>(dis));<span class="comment">//建成极小值</span></span><br><span class="line">	<span class="built_in">memset</span>(mn,<span class="number">0x7f7f7f7f</span>,<span class="keyword">sizeof</span>(mn));</span><br><span class="line">	<span class="built_in">memset</span>(id,<span class="number">0</span>,<span class="keyword">sizeof</span>(id));</span><br><span class="line">	dis[S]=<span class="number">0</span>;</span><br><span class="line">	fa[S]=<span class="number">0</span>;</span><br><span class="line">	qu.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		user[f1]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=e[i].to;</span><br><span class="line">			<span class="keyword">if</span>(e[i].v==<span class="number">0</span>||dis[t]&gt;=dis[f1]+e[i].w)<span class="keyword">continue</span>;<span class="comment">//&lt;=改为&gt;=</span></span><br><span class="line">			dis[t]=dis[f1]+e[i].w;</span><br><span class="line">			id[t]=i;</span><br><span class="line">			fa[t]=f1;</span><br><span class="line">			mn[t]=min(mn[f1],e[i].v);</span><br><span class="line">			<span class="keyword">if</span>(user[t]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				qu.push(t);</span><br><span class="line">				user[t]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dis[T]!=<span class="number">-0x3f3f3f40</span>;<span class="comment">//计算器算一下就知道了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例题:<a href="https://www.luogu.org/problem/P4015" target="_blank" rel="noopener">运输问题</a>     <a href="https://www.luogu.org/problem/P4014" target="_blank" rel="noopener">分配问题</a>     <a href="https://www.luogu.org/problem/P2770" target="_blank" rel="noopener">航空路线问题</a></p>
 
       
 
@@ -227,7 +255,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离散化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">费用流</a>
         		</li>
       		
 		</ul>
@@ -294,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/28/离散化/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/13/费用流/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +336,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/30/LCA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LCA
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/28/分块/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">分块</div>
+    <a href="/2019/08/12/最短路/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最短路</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -368,7 +387,7 @@ if(true){
   	repo: 'huibaigu.github.io',
   	owner: 'huibaigu',
   	admin: ['huibaigu'],
-  	id: 'Sun Jul 28 2019 20:00:00 GMT+0800',
+  	id: 'Tue Aug 13 2019 23:30:00 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
