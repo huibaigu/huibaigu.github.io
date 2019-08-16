@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.scwyl.cn/"/>
   <updated>2019-08-13T15:48:43.639Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.scwyl.cn/</id>
   
   <author>
     <name>灰白骨</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>费用流</title>
-    <link href="http://yoursite.com/2019/08/13/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
-    <id>http://yoursite.com/2019/08/13/费用流/</id>
+    <link href="http://www.scwyl.cn/2019/08/13/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
+    <id>http://www.scwyl.cn/2019/08/13/费用流/</id>
     <published>2019-08-13T15:30:00.000Z</published>
     <updated>2019-08-13T15:48:43.639Z</updated>
     
@@ -31,17 +31,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="费用流" scheme="http://yoursite.com/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
+      <category term="费用流" scheme="http://www.scwyl.cn/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
     
   </entry>
   
   <entry>
     <title>最短路</title>
-    <link href="http://yoursite.com/2019/08/12/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    <id>http://yoursite.com/2019/08/12/最短路/</id>
+    <link href="http://www.scwyl.cn/2019/08/12/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
+    <id>http://www.scwyl.cn/2019/08/12/最短路/</id>
     <published>2019-08-11T17:00:00.000Z</published>
     <updated>2019-08-11T15:46:34.728Z</updated>
     
@@ -54,17 +54,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="最短路" scheme="http://yoursite.com/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
+      <category term="最短路" scheme="http://www.scwyl.cn/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
   </entry>
   
   <entry>
     <title>强连通分量</title>
-    <link href="http://yoursite.com/2019/08/11/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
-    <id>http://yoursite.com/2019/08/11/强连通分量/</id>
+    <link href="http://www.scwyl.cn/2019/08/11/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
+    <id>http://www.scwyl.cn/2019/08/11/强连通分量/</id>
     <published>2019-08-11T13:30:00.000Z</published>
     <updated>2019-08-11T15:08:54.472Z</updated>
     
@@ -76,17 +76,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="Tarjan" scheme="http://yoursite.com/tags/Tarjan/"/>
+      <category term="Tarjan" scheme="http://www.scwyl.cn/tags/Tarjan/"/>
     
   </entry>
   
   <entry>
     <title>二分图匹配</title>
-    <link href="http://yoursite.com/2019/08/11/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
-    <id>http://yoursite.com/2019/08/11/二分图匹配/</id>
+    <link href="http://www.scwyl.cn/2019/08/11/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
+    <id>http://www.scwyl.cn/2019/08/11/二分图匹配/</id>
     <published>2019-08-11T12:30:00.000Z</published>
     <updated>2019-08-11T12:46:53.596Z</updated>
     
@@ -101,17 +101,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="网络流" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
+      <category term="网络流" scheme="http://www.scwyl.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
   </entry>
   
   <entry>
     <title>网络最大流(EK)与(Dinic)</title>
-    <link href="http://yoursite.com/2019/08/06/%E7%BD%91%E7%BB%9C%E6%B5%81(EK)%E4%B8%8E(Dinic)/"/>
-    <id>http://yoursite.com/2019/08/06/网络流(EK)与(Dinic)/</id>
+    <link href="http://www.scwyl.cn/2019/08/06/%E7%BD%91%E7%BB%9C%E6%B5%81(EK)%E4%B8%8E(Dinic)/"/>
+    <id>http://www.scwyl.cn/2019/08/06/网络流(EK)与(Dinic)/</id>
     <published>2019-08-06T05:00:00.000Z</published>
     <updated>2019-08-06T07:08:55.756Z</updated>
     
@@ -123,17 +123,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="网络流" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
+      <category term="网络流" scheme="http://www.scwyl.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
   </entry>
   
   <entry>
     <title>DP例题</title>
-    <link href="http://yoursite.com/2019/08/04/DP%E4%BE%8B%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/08/04/DP例题/</id>
+    <link href="http://www.scwyl.cn/2019/08/04/DP%E4%BE%8B%E9%A2%98/"/>
+    <id>http://www.scwyl.cn/2019/08/04/DP例题/</id>
     <published>2019-08-04T15:30:00.000Z</published>
     <updated>2019-08-04T15:45:20.723Z</updated>
     
@@ -145,17 +145,17 @@
     
     </summary>
     
-      <category term="例题" scheme="http://yoursite.com/categories/%E4%BE%8B%E9%A2%98/"/>
+      <category term="例题" scheme="http://www.scwyl.cn/categories/%E4%BE%8B%E9%A2%98/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>莫队</title>
-    <link href="http://yoursite.com/2019/08/03/%E8%8E%AB%E9%98%9F/"/>
-    <id>http://yoursite.com/2019/08/03/莫队/</id>
+    <link href="http://www.scwyl.cn/2019/08/03/%E8%8E%AB%E9%98%9F/"/>
+    <id>http://www.scwyl.cn/2019/08/03/莫队/</id>
     <published>2019-08-03T12:00:00.000Z</published>
     <updated>2019-08-04T15:14:48.001Z</updated>
     
@@ -167,17 +167,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="暴力" scheme="http://yoursite.com/tags/%E6%9A%B4%E5%8A%9B/"/>
+      <category term="暴力" scheme="http://www.scwyl.cn/tags/%E6%9A%B4%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>最小生成树(kruskal)与(prim)</title>
-    <link href="http://yoursite.com/2019/08/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
-    <id>http://yoursite.com/2019/08/01/最小生成树/</id>
+    <link href="http://www.scwyl.cn/2019/08/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
+    <id>http://www.scwyl.cn/2019/08/01/最小生成树/</id>
     <published>2019-08-01T15:30:00.000Z</published>
     <updated>2019-08-03T09:35:49.676Z</updated>
     
@@ -189,17 +189,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
+      <category term="图论" scheme="http://www.scwyl.cn/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>LCA</title>
-    <link href="http://yoursite.com/2019/07/30/LCA/"/>
-    <id>http://yoursite.com/2019/07/30/LCA/</id>
+    <link href="http://www.scwyl.cn/2019/07/30/LCA/"/>
+    <id>http://www.scwyl.cn/2019/07/30/LCA/</id>
     <published>2019-07-30T15:30:00.000Z</published>
     <updated>2019-08-03T09:36:48.168Z</updated>
     
@@ -211,17 +211,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
+      <category term="图论" scheme="http://www.scwyl.cn/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>离散化</title>
-    <link href="http://yoursite.com/2019/07/28/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
-    <id>http://yoursite.com/2019/07/28/离散化/</id>
+    <link href="http://www.scwyl.cn/2019/07/28/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
+    <id>http://www.scwyl.cn/2019/07/28/离散化/</id>
     <published>2019-07-28T12:00:00.000Z</published>
     <updated>2019-08-03T09:33:22.958Z</updated>
     
@@ -233,17 +233,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="离散化" scheme="http://yoursite.com/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
+      <category term="离散化" scheme="http://www.scwyl.cn/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
     
   </entry>
   
   <entry>
     <title>分块</title>
-    <link href="http://yoursite.com/2019/07/28/%E5%88%86%E5%9D%97/"/>
-    <id>http://yoursite.com/2019/07/28/分块/</id>
+    <link href="http://www.scwyl.cn/2019/07/28/%E5%88%86%E5%9D%97/"/>
+    <id>http://www.scwyl.cn/2019/07/28/分块/</id>
     <published>2019-07-28T09:00:00.000Z</published>
     <updated>2019-08-03T09:37:37.737Z</updated>
     
@@ -255,17 +255,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="暴力" scheme="http://yoursite.com/tags/%E6%9A%B4%E5%8A%9B/"/>
+      <category term="暴力" scheme="http://www.scwyl.cn/tags/%E6%9A%B4%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>树链剖分</title>
-    <link href="http://yoursite.com/2019/07/27/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    <id>http://yoursite.com/2019/07/27/树链剖分/</id>
+    <link href="http://www.scwyl.cn/2019/07/27/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
+    <id>http://www.scwyl.cn/2019/07/27/树链剖分/</id>
     <published>2019-07-27T15:30:00.000Z</published>
     <updated>2019-08-03T09:37:11.399Z</updated>
     
@@ -277,17 +277,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
+      <category term="图论" scheme="http://www.scwyl.cn/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>背包问题</title>
-    <link href="http://yoursite.com/2019/07/25/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/07/25/背包问题/</id>
+    <link href="http://www.scwyl.cn/2019/07/25/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"/>
+    <id>http://www.scwyl.cn/2019/07/25/背包问题/</id>
     <published>2019-07-25T15:30:00.000Z</published>
     <updated>2019-08-03T09:35:39.016Z</updated>
     
@@ -299,17 +299,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>区间DP</title>
-    <link href="http://yoursite.com/2019/07/24/%E5%8C%BA%E9%97%B4DP/"/>
-    <id>http://yoursite.com/2019/07/24/区间DP/</id>
+    <link href="http://www.scwyl.cn/2019/07/24/%E5%8C%BA%E9%97%B4DP/"/>
+    <id>http://www.scwyl.cn/2019/07/24/区间DP/</id>
     <published>2019-07-24T15:30:00.000Z</published>
     <updated>2019-08-03T09:35:22.318Z</updated>
     
@@ -322,17 +322,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>线性DP</title>
-    <link href="http://yoursite.com/2019/07/24/%E7%BA%BF%E6%80%A7DP/"/>
-    <id>http://yoursite.com/2019/07/24/线性DP/</id>
+    <link href="http://www.scwyl.cn/2019/07/24/%E7%BA%BF%E6%80%A7DP/"/>
+    <id>http://www.scwyl.cn/2019/07/24/线性DP/</id>
     <published>2019-07-23T16:30:00.000Z</published>
     <updated>2019-08-03T09:34:33.290Z</updated>
     
@@ -344,17 +344,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>状态压缩</title>
-    <link href="http://yoursite.com/2019/07/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/"/>
-    <id>http://yoursite.com/2019/07/22/状态压缩/</id>
+    <link href="http://www.scwyl.cn/2019/07/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://www.scwyl.cn/2019/07/22/状态压缩/</id>
     <published>2019-07-22T15:00:00.000Z</published>
     <updated>2019-08-03T09:34:17.732Z</updated>
     
@@ -366,17 +366,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="状压" scheme="http://yoursite.com/tags/%E7%8A%B6%E5%8E%8B/"/>
+      <category term="状压" scheme="http://www.scwyl.cn/tags/%E7%8A%B6%E5%8E%8B/"/>
     
   </entry>
   
   <entry>
     <title>简述动态规划</title>
-    <link href="http://yoursite.com/2019/07/22/%E7%AE%80%E8%BF%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <id>http://yoursite.com/2019/07/22/简述动态规划/</id>
+    <link href="http://www.scwyl.cn/2019/07/22/%E7%AE%80%E8%BF%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>http://www.scwyl.cn/2019/07/22/简述动态规划/</id>
     <published>2019-07-22T14:30:00.000Z</published>
     <updated>2019-08-03T09:34:51.459Z</updated>
     
@@ -388,17 +388,17 @@
     
     </summary>
     
-      <category term="目录" scheme="http://yoursite.com/categories/%E7%9B%AE%E5%BD%95/"/>
+      <category term="目录" scheme="http://www.scwyl.cn/categories/%E7%9B%AE%E5%BD%95/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>关于本站</title>
-    <link href="http://yoursite.com/2019/07/21/%E5%85%B3%E4%BA%8E/"/>
-    <id>http://yoursite.com/2019/07/21/关于/</id>
+    <link href="http://www.scwyl.cn/2019/07/21/%E5%85%B3%E4%BA%8E/"/>
+    <id>http://www.scwyl.cn/2019/07/21/关于/</id>
     <published>2019-07-21T05:00:00.000Z</published>
     <updated>2019-08-03T09:33:50.361Z</updated>
     
@@ -410,17 +410,17 @@
     
     </summary>
     
-      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+      <category term="杂谈" scheme="http://www.scwyl.cn/categories/%E6%9D%82%E8%B0%88/"/>
     
     
-      <category term="关于" scheme="http://yoursite.com/tags/%E5%85%B3%E4%BA%8E/"/>
+      <category term="关于" scheme="http://www.scwyl.cn/tags/%E5%85%B3%E4%BA%8E/"/>
     
   </entry>
   
   <entry>
     <title>模拟退火</title>
-    <link href="http://yoursite.com/2019/07/20/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB/"/>
-    <id>http://yoursite.com/2019/07/20/模拟退火/</id>
+    <link href="http://www.scwyl.cn/2019/07/20/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB/"/>
+    <id>http://www.scwyl.cn/2019/07/20/模拟退火/</id>
     <published>2019-07-20T12:30:00.000Z</published>
     <updated>2019-08-03T09:35:07.715Z</updated>
     
@@ -432,17 +432,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="概率" scheme="http://yoursite.com/tags/%E6%A6%82%E7%8E%87/"/>
+      <category term="概率" scheme="http://www.scwyl.cn/tags/%E6%A6%82%E7%8E%87/"/>
     
   </entry>
   
   <entry>
     <title>两个long long类型相拼接</title>
-    <link href="http://yoursite.com/2019/07/20/%E4%B8%A4%E4%B8%AAlong%20long%E7%B1%BB%E5%9E%8B%E7%9B%B8%E6%8B%BC%E6%8E%A5/"/>
-    <id>http://yoursite.com/2019/07/20/两个long long类型相拼接/</id>
+    <link href="http://www.scwyl.cn/2019/07/20/%E4%B8%A4%E4%B8%AAlong%20long%E7%B1%BB%E5%9E%8B%E7%9B%B8%E6%8B%BC%E6%8E%A5/"/>
+    <id>http://www.scwyl.cn/2019/07/20/两个long long类型相拼接/</id>
     <published>2019-07-20T10:00:00.000Z</published>
     <updated>2019-08-03T09:34:03.863Z</updated>
     
@@ -454,10 +454,10 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="技巧" scheme="http://yoursite.com/tags/%E6%8A%80%E5%B7%A7/"/>
+      <category term="技巧" scheme="http://www.scwyl.cn/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
