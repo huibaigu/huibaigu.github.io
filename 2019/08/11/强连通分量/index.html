@@ -6,7 +6,9 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
+
   <title>强连通分量 | 灰白骨的blog</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。">
 <meta name="keywords" content="Tarjan">
@@ -29,6 +31,28 @@
   
     <link rel="icon" href="img/751379374.jpg">
   
+
+
+  
+    <script>
+      var OriginTitile = document.title;
+      var titleTime;
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden)
+        {
+          document.title = '(つェ⊂)我藏好了哦~' + OriginTitile;
+          clearTimeout(titleTime);
+        }
+        else
+        {
+          document.title = '(*´∇｀*) 被你发现啦~' + OriginTitile;
+          titleTime = setTimeout(function(){document.title = OriginTitile;}, 2000);
+        }
+      });
+    </script>
+  
+
+
   <link rel="stylesheet" type="text/css" href="/./main.7abff6.css">
   <style type="text/css">
   
@@ -57,11 +81,14 @@
 		  <h1 class="header-author"><a href="/">灰白骨</a></h1>
 		</hgroup>
 		
+    博客全站共<span class="post-count">19.4k字</span>
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/index.html">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -115,6 +142,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -137,7 +166,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -168,6 +199,7 @@
   	<time datetime="2019-08-11T13:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
 </a>
         
+        <div align="center" class="post-count">字数:1.5k字||预计阅读时长:7分钟</div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
@@ -549,15 +581,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技巧</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">网络流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +601,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tarjan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tarjan</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
