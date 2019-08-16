@@ -261,26 +261,6 @@
         </div>
       
 
-
-      
-      <div id="wpac-rating"></div>
-<script type="text/javascript">
-  wpac_init = window.wpac_init || [];
-  wpac_init.push({widget: 'Rating', id:  20382});
-  (function() {
-  if ('WIDGETPACK_LOADED' in window) return;
-  WIDGETPACK_LOADED = true;
-  var mc = document.createElement('script');
-  mc.type = 'text/javascript';
-  mc.async = true;
-  mc.src = 'https://embed.widgetpack.com/widget.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-  })();
-</script>
-
-      
-
-
       
     </div>
     <div class="article-info article-info-index">
@@ -369,6 +349,23 @@
 </aside>
 
 
+      <div id="wpac-rating"></div>
+<script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id:  20382});
+  (function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  mc.src = 'https://embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+</script>
+
+
+
 
 
   
@@ -427,8 +424,8 @@ gitalk.render('gitalk-container')
         <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
         <script>
             var now = new Date(); 
-            function createtime() { 
-                var grt= new Date("07/20/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
+            function createtime() {
+                var grt= new Date("07/19/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
                 now.setTime(now.getTime()+250); 
                 days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
                 hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -539,6 +536,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">网络流</a>
               </li>
              
@@ -547,7 +548,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,11 +560,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,10 +573,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">离散化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
