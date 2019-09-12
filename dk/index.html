@@ -7,24 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.scwyl.cn">
 
-  <title>强连通分量 | 灰白骨的blog</title>
+  <title>广告栏 | 灰白骨的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。">
-<meta name="keywords" content="Tarjan">
-<meta property="og:type" content="article">
-<meta property="og:title" content="强连通分量">
-<meta property="og:url" content="http://www.scwyl.cn/2019/08/11/强连通分量/index.html">
+  <meta name="description" content="(adsbygoogle = window.adsbygoogle || []).push({           google_ad_client: &quot;ca-pub-3228055577894732&quot;,           enable_page_level_ads: true      });">
+<meta name="keywords" content="灰白骨">
+<meta property="og:type" content="website">
+<meta property="og:title" content="广告栏">
+<meta property="og:url" content="http://www.scwyl.cn/dk/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
-<meta property="og:description" content="强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。">
+<meta property="og:description" content="(adsbygoogle = window.adsbygoogle || []).push({           google_ad_client: &quot;ca-pub-3228055577894732&quot;,           enable_page_level_ads: true      });">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.scwyl.cn/images/Tarjan1.jpg">
-<meta property="og:image" content="http://www.scwyl.cn/images/Tarjan1.jpg">
-<meta property="og:updated_time" content="2019-08-11T15:08:54.472Z">
+<meta property="og:updated_time" content="2019-09-12T05:00:39.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="强连通分量">
-<meta name="twitter:description" content="强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。">
-<meta name="twitter:image" content="http://www.scwyl.cn/images/Tarjan1.jpg">
+<meta name="twitter:title" content="广告栏">
+<meta name="twitter:description" content="(adsbygoogle = window.adsbygoogle || []).push({           google_ad_client: &quot;ca-pub-3228055577894732&quot;,           enable_page_level_ads: true      });">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -189,98 +186,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-强连通分量" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      强连通分量
+      广告栏
     </h1>
   
 
         
-        <a href="/2019/08/11/强连通分量/" class="archive-article-date">
-  	<time datetime="2019-08-11T13:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
+        <a href="/dk/index.html" class="archive-article-date">
+  	<time datetime="2019-09-12T05:00:39.324Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
 </a>
         
-        <div align="center" class="post-count">字数:1.5k字||预计阅读时长:7分钟</div>
+        <div align="center" class="post-count">字数:10字||预计阅读时长:1分钟</div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>强连通：如果两个顶点可以相互通达，则称两个顶点 强连通(strongly connected)。如果有向图G的每两个顶点都 强连通，称G是一个强连通图。非 强连通图有向图的极大强连通子图，称为强连通分量(strongly connected components)。<br><a id="more"></a><br>简单来说就是图中有环，即<br><img src="/images/Tarjan1.jpg" alt><br>而tarjan使用来找环的<br><a href="https://www.luogu.org/problem/P3387" target="_blank" rel="noopener">缩点</a><br>思路:输入-&gt;tarjan-&gt;把环缩成一个点-&gt;spfa(dijskra)-&gt;输出-&gt;AC<br>首先输入</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,form;</span><br><span class="line">&#125;;</span><br><span class="line">edge e[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].to=f2;</span><br><span class="line">	e[ei].next=head[f1];</span><br><span class="line">	e[ei].form=f1;</span><br><span class="line">	head[f1]=ei;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ss=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(ss&lt;<span class="string">'0'</span>||ss&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ss==<span class="string">'-'</span>)f=<span class="number">-1</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ss&gt;=<span class="string">'0'</span>&amp;&amp;ss&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+ss-<span class="string">'0'</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)v[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read();</span><br><span class="line">		add(f1,f2);</span><br><span class="line">	&#125;</span><br><span class="line">	dotarjan();</span><br><span class="line">	spfa();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[teamlist]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下一步就是tarjan找环缩点了</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>变量名</th>
-<th>变量作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>low[i]</td>
-<td>i点的进入stack的时间</td>
-</tr>
-<tr>
-<td>dfn[i]</td>
-<td>从i点出发，所能访问到的最早的进入时间</td>
-</tr>
-<tr>
-<td>teamindex</td>
-<td>有几组</td>
-</tr>
-<tr>
-<td>team[i]</td>
-<td>i点是在第几组</td>
-</tr>
-<tr>
-<td>indegree[i]</td>
-<td>i点的入度</td>
-</tr>
-<tr>
-<td>stindex</td>
-<td>当前时间</td>
-</tr>
-<tr>
-<td>vt[i]</td>
-<td>当前第i组中所有点的权</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>为了确保所有点都被找过，我们把每一个点都找一次</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dotarjan</span><span class="params">()</span><span class="comment">//调用tarjan</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> o=<span class="number">1</span>;o&lt;=n;o++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(dfn[o]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每次掉用我们都让时间向前走一步,然后初始化low与dfn,并把当前点加入stack</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stindex++;</span><br><span class="line">low[f]=stindex;</span><br><span class="line">dfn[f]=stindex;</span><br><span class="line">st.push(f);</span><br></pre></td></tr></table></figure>
-<p>然后我们试着往前继续找没找过的点直到找完，对于找过的点，如果那个点还没被分组，就更新low,此时的low可能会比dfn小</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=h[f];i;i=e[i].next)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">    <span class="keyword">if</span>(dfn[to]==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        tarjan(to);</span><br><span class="line">        low[f]=min(low[f],low[to]);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(team[to]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            low[f]=min(dfn[to],low[f]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但我们怎么知道当前有没有找到一个环呢。这很简单，</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dfn[f]==low[f])</span><br><span class="line">&#123;</span><br><span class="line">    这样就表示有环了，或者只有一个点</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如图:</p>
-<p><img src="/images/Tarjan1.jpg" alt></p>
-<p>试想一下，我从1开始dotarjan,他从1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7-&gt;8</p>
-<p>然后从8-&gt;3但是3已经被找过了，更新一路的low,发现从3开始环里面的low都与dfn[3]相等，</p>
-<p>我们就可以增加一组，把环上所有点的点权和为一组的点权</p>
-<p>但是这一个环上只有单个点怎么办，就如1，2，那就把1，2单独当成一组。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dfn[f]==low[f])</span><br><span class="line">&#123;</span><br><span class="line">    teamindex++;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> top=st.top();</span><br><span class="line">        team[top]=teamindex;</span><br><span class="line">        st.pop();</span><br><span class="line">        vt[teamindex]+=v[top];</span><br><span class="line">        <span class="keyword">if</span>(top==f)<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>整个tarjan函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    stindex++;</span><br><span class="line">    low[f]=stindex;</span><br><span class="line">    dfn[f]=stindex;</span><br><span class="line">    st.push(f);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=h[f];i;i=e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> to=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(dfn[to]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(to);</span><br><span class="line">            low[f]=min(low[f],low[to]);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(team[to]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                low[f]=min(dfn[to],low[f]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dfn[f]==low[f])</span><br><span class="line">    &#123;</span><br><span class="line">        teamindex++;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> top=st.top();</span><br><span class="line">            team[top]=teamindex;</span><br><span class="line">            st.pop();</span><br><span class="line">            vt[teamindex]+=v[top];</span><br><span class="line">            <span class="keyword">if</span>(top==f)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>找完环了，这下该把环缩成点了，</p>
-<p>怎么缩了，实际上已经处理好了只需要把ei数组更新一下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">doreduce</span><span class="params">()</span><span class="comment">//缩点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=ei;<span class="comment">//会用到之前的ei的值</span></span><br><span class="line">    ei=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(h,<span class="number">0</span>,<span class="keyword">sizeof</span>(h));<span class="comment">//清楚所有记录</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(team[e[i].from]==team[e[i].to])<span class="keyword">continue</span>;<span class="comment">//这个点在环上就跳过</span></span><br><span class="line">        indegree[team[e[i].to]]++;</span><br><span class="line">        add(team[e[i].from],team[e[i].to]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>缩完点后就该spfa求最大权了</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=teamlist;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(ind[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			qu.push(i);</span><br><span class="line">			ans[i]=vt[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">			ind[to]--;</span><br><span class="line">			ans[to]=max(ans[to],ans[f1]+vt[to]);</span><br><span class="line">			<span class="keyword">if</span>(ind[to]==<span class="number">0</span>)qu.push(to);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(ans+<span class="number">1</span>,ans+<span class="number">1</span>+teamlist);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后的ans[teamlist]就是答案</p>
-<p>下边是我的AC的代码,我把缩点的那部分放到dotarjan里了</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> ei,n,m,ans[<span class="number">10005</span>],head[<span class="number">10005</span>],teamlist,vt[<span class="number">10005</span>],tmm,dfn[<span class="number">10005</span>],ind[<span class="number">10005</span>],v[<span class="number">10005</span>],team[<span class="number">10005</span>],low[<span class="number">10005</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,form;</span><br><span class="line">&#125;;</span><br><span class="line">edge e[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> f1,<span class="keyword">int</span> f2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ei++;</span><br><span class="line">	e[ei].to=f2;</span><br><span class="line">	e[ei].next=head[f1];</span><br><span class="line">	e[ei].form=f1;</span><br><span class="line">	head[f1]=ei;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ss=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(ss&lt;<span class="string">'0'</span>||ss&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ss==<span class="string">'-'</span>)f=<span class="number">-1</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ss&gt;=<span class="string">'0'</span>&amp;&amp;ss&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+ss-<span class="string">'0'</span>;ss=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> f1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tmm++;</span><br><span class="line">	dfn[f1]=tmm;</span><br><span class="line">	low[f1]=tmm;</span><br><span class="line">	st.push(f1);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(dfn[to]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			tarjan(to);</span><br><span class="line">			low[f1]=min(low[to],low[f1]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(team[to]==<span class="number">0</span>)low[f1]=min(dfn[to],low[f1]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dfn[f1]==low[f1])</span><br><span class="line">	&#123;</span><br><span class="line">		teamlist++;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			team[st.top()]=teamlist;</span><br><span class="line">			vt[teamlist]+=v[st.top()];</span><br><span class="line">			<span class="keyword">if</span>(st.top()==f1)</span><br><span class="line">			&#123;</span><br><span class="line">				st.pop();</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			st.pop();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dotarjan</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(dfn[i]==<span class="number">0</span>)tarjan(i);</span><br><span class="line">	<span class="keyword">int</span> l=ei;</span><br><span class="line">	ei=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)head[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(team[e[i].form]==team[e[i].to])<span class="keyword">continue</span>;</span><br><span class="line">		ind[team[e[i].to]]++;</span><br><span class="line">		add(team[e[i].form],team[e[i].to]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qu;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=teamlist;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(ind[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			qu.push(i);</span><br><span class="line">			ans[i]=vt[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=qu.front();</span><br><span class="line">		qu.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[f1];i;i=e[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> to=e[i].to;</span><br><span class="line">			ind[to]--;</span><br><span class="line">			ans[to]=max(ans[to],ans[f1]+vt[to]);</span><br><span class="line">			<span class="keyword">if</span>(ind[to]==<span class="number">0</span>)qu.push(to);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(ans+<span class="number">1</span>,ans+<span class="number">1</span>+teamlist);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)v[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> f1=read(),f2=read();</span><br><span class="line">		add(f1,f2);</span><br><span class="line">	&#125;</span><br><span class="line">	dotarjan();</span><br><span class="line">	spfa();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[teamlist]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例题:</p>
-<p><a href="https://www.luogu.org/problem/P1262" target="_blank" rel="noopener">间谍网络</a>     <a href="https://www.luogu.org/problem/P2341" target="_blank" rel="noopener">受欢迎的牛</a>     <a href="https://www.luogu.org/problem/P2746" target="_blank" rel="noopener">校园网</a></p>
-
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3228055577894732",
+          enable_page_level_ads: true
+     });
+</script>
       
 
       
@@ -292,7 +225,7 @@
           
           <br>
           <strong>本文链接：</strong>
-          http://www.scwyl.cn/2019/08/11/强连通分量/
+          http://www.scwyl.cn/dk/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -310,29 +243,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tarjan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -361,25 +272,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2019/08/12/最短路/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          最短路
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/08/11/二分图匹配/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">二分图匹配</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -436,7 +328,7 @@ if(true){
   	repo: 'huibaigu.github.io',
   	owner: 'huibaigu',
   	admin: ['huibaigu'],
-  	id: 'Sun Aug 11 2019 21:30:00 GMT+0800',
+  	id: 'Thu Sep 12 2019 13:00:39 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -496,7 +388,7 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
