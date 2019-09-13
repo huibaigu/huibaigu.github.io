@@ -190,9 +190,6 @@
             <article id="post-状态压缩" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-    
-    
-    
       <header class="article-header">
         
   
@@ -233,7 +230,9 @@
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">get:</span><br><span class="line"><span class="number">1.</span>求出x的第k位:(x&gt;&gt;(k<span class="number">-1</span>))&amp;<span class="number">1</span>;</span><br><span class="line"><span class="built_in">set</span>:</span><br><span class="line"><span class="number">1.</span>把x的第k位改为<span class="number">1</span>:x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.</span>把x的第k位改为<span class="number">0</span>:<span class="number">1.</span>x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line">		  或者:<span class="number">2.</span>x&amp;(~(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)));</span><br><span class="line"><span class="number">3.</span><span class="keyword">if</span>(x&amp;(x&lt;&lt;<span class="number">1</span>)!=<span class="number">0</span>)就表示有相临的‘<span class="number">1</span>’;如<span class="number">0110</span>或<span class="number">1011</span></span><br><span class="line"><span class="number">4.</span>取k位全是<span class="number">1</span>:<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
 
       
-
+      
+    
+    
       
       
         <div class="declare">
@@ -527,15 +526,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">关于</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +538,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+                <a href="javascript:void(0)" class="js-tag color3">关于</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,6 +551,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tarjan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,10 +571,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">离散化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
               <li class="article-tag-list-item">
