@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2019-08-28T16:01:15.927Z</updated>
+  <updated>2019-09-26T16:18:52.360Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>番剧推荐</title>
+    <link href="http://www.scwyl.cn/2019/09/27/%E5%8A%A8%E6%BC%AB/"/>
+    <id>http://www.scwyl.cn/2019/09/27/动漫/</id>
+    <published>2019-09-26T16:10:00.000Z</published>
+    <updated>2019-09-26T16:18:52.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>推荐给各位巨佬的番剧，在这里写出来，以后可以推荐给别人</p><a id="more"></a><p>1.工作细胞<br>2.Fate/Zero 第一季<br>3.Fate/Zero 第二季<br>4.Fate/stay night [UBW]第一季<br>5.Fate/stay night [UBW]第二季<br>6.Fate/EXTRA<br>7.君主·埃尔梅罗二世事件簿 魔眼收集列车<br>8.鬼灭之刃<br>9.欢迎来到实力至上主义的教室<br>10.散华礼弥<br>11.某科学的一方通行<br>12.某科学的超电磁炮<br>13.多罗罗<br>14.锁锁美同学@提不起劲</p><p>15.街角魔王<br>16.地狱少女———系列<br>17.玛纳利亚的密友<br>18.辉夜大小姐想让我告白<br>                     ————up:19/09/27/0:17</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;推荐给各位巨佬的番剧，在这里写出来，以后可以推荐给别人&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="动漫" scheme="http://www.scwyl.cn/categories/%E5%8A%A8%E6%BC%AB/"/>
+    
+    
+      <category term="推荐" scheme="http://www.scwyl.cn/tags/%E6%8E%A8%E8%8D%90/"/>
+    
+  </entry>
   
   <entry>
     <title>c++网站壁纸获取</title>
@@ -441,28 +463,6 @@
     
     
       <category term="状压" scheme="http://www.scwyl.cn/tags/%E7%8A%B6%E5%8E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简述动态规划</title>
-    <link href="http://www.scwyl.cn/2019/07/22/%E7%AE%80%E8%BF%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <id>http://www.scwyl.cn/2019/07/22/简述动态规划/</id>
-    <published>2019-07-22T14:30:00.000Z</published>
-    <updated>2019-08-03T09:34:51.459Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>动态规划(dynamic programming)是运筹学的一个分支，是求解决策过程(decision process)最优化的数学方法。20世纪50年代初美国数学家R.E.Bellman等人在研究多阶段决策过程(multistep decision process)的优化问题时，提出了著名的最优化原理(principle of optimality)，把多阶段过程转化为一系列单阶段问题，利用各阶段之间的关系，逐个求解，创立了解决这类过程优化问题的新方法——动态规划。1957年出版了他的名著《Dynamic Programming》，这是该领域的第一本著作。</p><a id="more"></a><p>动态规划一般可分为线性动规，区域动规，树形动规，背包动规四类。</p><p>举例：</p><p>线性动规：拦截导弹，合唱队形，挖地雷，建学校，剑客决斗等；</p><p>区域动规：石子合并， 加分二叉树，统计单词个数，炮兵布阵等；</p><p>树形动规：贪吃的九头龙，二分查找树，聚会的欢乐，数字三角形等；</p><p>背包问题：01背包问题，完全背包问题，分组背包问题，二维背包，装箱问题，挤牛奶；</p><p>//以上摘自百度百科</p><p>有时还会遇到状态压缩加动态规划</p><p>目录：</p><p><a href="\2019\07\22\状态压缩\">状态压缩</a></p><p><a href="\2019\07\24\线性DP\">线性动规</a></p><p><a href="\2019\07\24\区间DP\">区域动规</a></p><p><a href="\2019\07\25\背包问题\">背包问题</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;动态规划(dynamic programming)是运筹学的一个分支，是求解决策过程(decision process)最优化的数学方法。20世纪50年代初美国数学家R.E.Bellman等人在研究多阶段决策过程(multistep decision process)的优化问题时，提出了著名的最优化原理(principle of optimality)，把多阶段过程转化为一系列单阶段问题，利用各阶段之间的关系，逐个求解，创立了解决这类过程优化问题的新方法——动态规划。1957年出版了他的名著《Dynamic Programming》，这是该领域的第一本著作。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="目录" scheme="http://www.scwyl.cn/categories/%E7%9B%AE%E5%BD%95/"/>
-    
-    
-      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
