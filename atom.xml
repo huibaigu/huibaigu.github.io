@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2019-09-28T09:41:55.013Z</updated>
+  <updated>2019-09-28T11:53:18.026Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最长递增子序列(LIS)与最长公共子序列(LCS)</title>
+    <link href="http://www.scwyl.cn/2019/09/28/LISandLCS/"/>
+    <id>http://www.scwyl.cn/2019/09/28/LISandLCS/</id>
+    <published>2019-09-28T11:50:00.000Z</published>
+    <updated>2019-09-28T11:53:18.026Z</updated>
+    
+    <content type="html"><![CDATA[<p>LIS：Longest Increasing Subsequence，最长递增子序列<br>LCS：Longest Common Subsequence，最长公共子序列<br>这两个都是可以用DP来解决<br><a id="more"></a></p><h3 id="LIS-最长递增子序列"><a href="#LIS-最长递增子序列" class="headerlink" title="LIS 最长递增子序列"></a>LIS 最长递增子序列</h3><p>给定一个数列: 1 7 6 2 3 4<br>它的LIS就是1 2 3 4 四个数</p><h5 id="n-2-做法"><a href="#n-2-做法" class="headerlink" title="$n^2$做法"></a>$n^2$做法</h5><p>我们维护一个dp[n]数组，赋初始值为1,表示以i结尾的LIS长度<br>求的话很简单<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">dp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(number[j]&lt;number[i])</span><br><span class="line">&#123;</span><br><span class="line">dp[i]=max(dp[i],dp[j]+<span class="number">1</span>); </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>妥妥的T到飞起<br>怎么优化呢，观察，每次都是去1到i中比number[i]小的的dp[j]的最大值。。。。<br>单调队列走起。。。但是我太弱写不出来</p><h5 id="nlogn-做法"><a href="#nlogn-做法" class="headerlink" title="$nlogn$做法"></a>$nlogn$做法</h5><p>还有一种优化办法，利用贪心思想，加上二分<br>让dp[i]定义为该序列中，上升子序列长度为i的上升子序列，的最小末尾数值<br>可以得到dp数组是单调的<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">dp[i]=<span class="number">0x7fffffff</span>;</span><br><span class="line">&#125;</span><br><span class="line">dp[<span class="number">1</span>]=number[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> len=<span class="number">1</span>;<span class="comment">//当前最大长度</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> l=<span class="number">0</span>,r=len,mid;</span><br><span class="line"><span class="keyword">if</span>(number[i]&gt;dp[len])dp[++len]=number[i]; <span class="comment">//如果刚好大于f[len]，那就向后依次增加 </span></span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;<span class="comment">//二分</span></span><br><span class="line"><span class="keyword">while</span>(l&lt;r)</span><br><span class="line">&#123;   </span><br><span class="line">mid=(l+r)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(dp[mid]&gt;number[i])r=mid;</span><br><span class="line"><span class="keyword">else</span> l=mid+<span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line">dp[l]=min(number[i],dp[l]);<span class="comment">//更新最小末尾 </span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS 最长公共子序列"></a>LCS 最长公共子序列</h3><p>待补充。。。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LIS：Longest Increasing Subsequence，最长递增子序列&lt;br&gt;LCS：Longest Common Subsequence，最长公共子序列&lt;br&gt;这两个都是可以用DP来解决&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="LIS,LCS" scheme="http://www.scwyl.cn/tags/LIS-LCS/"/>
+    
+  </entry>
   
   <entry>
     <title>番剧推荐</title>
@@ -441,28 +463,6 @@
     
     
       <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>状态压缩</title>
-    <link href="http://www.scwyl.cn/2019/07/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/"/>
-    <id>http://www.scwyl.cn/2019/07/22/状态压缩/</id>
-    <published>2019-07-22T15:00:00.000Z</published>
-    <updated>2019-08-03T09:34:17.732Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>状态压缩[状压],是通过2进制来优化空间的一种方法</p><a id="more"></a><p>一个int是2^31 -1,写成二进制就是0111 1111 1111 1111 1111 1111 1111 1111,总共31个‘1’。</p><p>当我们储存一个数据只有很少的状态时就可以通过状压实现优化内存。</p><p>举例：</p><p>​    在20件物品中，分别编号1~20，</p><h6 id="1-选上某物品："><a href="#1-选上某物品：" class="headerlink" title="1.选上某物品："></a>1.选上某物品：</h6><p>平时我们：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use[编号]=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>而现在就可以用</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=(use|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure><p>比如说我要选第5件:</p><p>那么use就会变成0001 0000</p><p>在选上第2件</p><p>use: 0001 0010</p><h6 id="2-选了多少个，"><a href="#2-选了多少个，" class="headerlink" title="2.选了多少个，"></a>2.选了多少个，</h6><p>就是统计1的个数，很简单：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)</span><br><span class="line">    &#123;</span><br><span class="line">        p+=(x&amp;<span class="number">1</span>);</span><br><span class="line">        x&gt;&gt;<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="3-如果要一下子全部选呢"><a href="#3-如果要一下子全部选呢" class="headerlink" title="3.如果要一下子全部选呢"></a>3.如果要一下子全部选呢</h6><p>可以用</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use=<span class="number">1</span>&lt;&lt;(<span class="number">20</span>+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure><h6 id="4-不选某一个物品"><a href="#4-不选某一个物品" class="headerlink" title="4.不选某一个物品"></a>4.不选某一个物品</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.u</span>se|(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.u</span>se&amp;(~(<span class="number">1</span>&lt;&lt;(编号<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure><h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">get:</span><br><span class="line"><span class="number">1.</span>求出x的第k位:(x&gt;&gt;(k<span class="number">-1</span>))&amp;<span class="number">1</span>;</span><br><span class="line"><span class="built_in">set</span>:</span><br><span class="line"><span class="number">1.</span>把x的第k位改为<span class="number">1</span>:x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line"><span class="number">2.</span>把x的第k位改为<span class="number">0</span>:<span class="number">1.</span>x|(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>));</span><br><span class="line">  或者:<span class="number">2.</span>x&amp;(~(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)));</span><br><span class="line"><span class="number">3.</span><span class="keyword">if</span>(x&amp;(x&lt;&lt;<span class="number">1</span>)!=<span class="number">0</span>)就表示有相临的‘<span class="number">1</span>’;如<span class="number">0110</span>或<span class="number">1011</span></span><br><span class="line"><span class="number">4.</span>取k位全是<span class="number">1</span>:<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>)<span class="number">-1</span>;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;状态压缩[状压],是通过2进制来优化空间的一种方法&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="状压" scheme="http://www.scwyl.cn/tags/%E7%8A%B6%E5%8E%8B/"/>
     
   </entry>
   
