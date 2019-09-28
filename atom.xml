@@ -18,8 +18,8 @@
   
   <entry>
     <title>番剧推荐</title>
-    <link href="http://www.scwyl.cn/2019/09/27/%E5%8A%A8%E6%BC%AB/"/>
-    <id>http://www.scwyl.cn/2019/09/27/动漫/</id>
+    <link href="http://www.scwyl.cn/2019/09/27/comic/"/>
+    <id>http://www.scwyl.cn/2019/09/27/comic/</id>
     <published>2019-09-26T16:10:00.000Z</published>
     <updated>2019-09-28T09:41:55.013Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>c++网站壁纸获取</title>
-    <link href="http://www.scwyl.cn/2019/08/29/%E5%A3%81%E7%BA%B8%E8%8E%B7%E5%8F%96/"/>
-    <id>http://www.scwyl.cn/2019/08/29/壁纸获取/</id>
+    <link href="http://www.scwyl.cn/2019/08/29/wallpaper/"/>
+    <id>http://www.scwyl.cn/2019/08/29/wallpaper/</id>
     <published>2019-08-28T17:00:00.000Z</published>
     <updated>2019-08-28T16:01:15.927Z</updated>
     
@@ -64,8 +64,8 @@
   
   <entry>
     <title>数论</title>
-    <link href="http://www.scwyl.cn/2019/08/25/%E6%95%B0%E8%AE%BA/"/>
-    <id>http://www.scwyl.cn/2019/08/25/数论/</id>
+    <link href="http://www.scwyl.cn/2019/08/25/math/"/>
+    <id>http://www.scwyl.cn/2019/08/25/math/</id>
     <published>2019-08-24T19:00:00.000Z</published>
     <updated>2019-08-24T19:23:50.584Z</updated>
     
@@ -88,8 +88,8 @@
   
   <entry>
     <title>贪吃蛇</title>
-    <link href="http://www.scwyl.cn/2019/08/18/%E8%B4%AA%E5%90%83%E8%9B%87/"/>
-    <id>http://www.scwyl.cn/2019/08/18/贪吃蛇/</id>
+    <link href="http://www.scwyl.cn/2019/08/18/snake/"/>
+    <id>http://www.scwyl.cn/2019/08/18/snake/</id>
     <published>2019-08-18T10:30:00.000Z</published>
     <updated>2019-08-19T03:15:45.077Z</updated>
     
@@ -111,8 +111,8 @@
   
   <entry>
     <title>费用流</title>
-    <link href="http://www.scwyl.cn/2019/08/13/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
-    <id>http://www.scwyl.cn/2019/08/13/费用流/</id>
+    <link href="http://www.scwyl.cn/2019/08/13/cost/"/>
+    <id>http://www.scwyl.cn/2019/08/13/cost/</id>
     <published>2019-08-13T15:30:00.000Z</published>
     <updated>2019-08-13T15:48:43.639Z</updated>
     
@@ -133,8 +133,8 @@
   
   <entry>
     <title>最短路</title>
-    <link href="http://www.scwyl.cn/2019/08/12/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    <id>http://www.scwyl.cn/2019/08/12/最短路/</id>
+    <link href="http://www.scwyl.cn/2019/08/12/path/"/>
+    <id>http://www.scwyl.cn/2019/08/12/path/</id>
     <published>2019-08-11T17:00:00.000Z</published>
     <updated>2019-08-11T15:46:34.728Z</updated>
     
@@ -156,8 +156,8 @@
   
   <entry>
     <title>强连通分量</title>
-    <link href="http://www.scwyl.cn/2019/08/11/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
-    <id>http://www.scwyl.cn/2019/08/11/强连通分量/</id>
+    <link href="http://www.scwyl.cn/2019/08/11/tarjan/"/>
+    <id>http://www.scwyl.cn/2019/08/11/tarjan/</id>
     <published>2019-08-11T13:30:00.000Z</published>
     <updated>2019-08-11T15:08:54.472Z</updated>
     
@@ -178,8 +178,8 @@
   
   <entry>
     <title>二分图匹配</title>
-    <link href="http://www.scwyl.cn/2019/08/11/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
-    <id>http://www.scwyl.cn/2019/08/11/二分图匹配/</id>
+    <link href="http://www.scwyl.cn/2019/08/11/SplitMap/"/>
+    <id>http://www.scwyl.cn/2019/08/11/SplitMap/</id>
     <published>2019-08-11T12:30:00.000Z</published>
     <updated>2019-08-11T12:46:53.596Z</updated>
     
@@ -203,8 +203,8 @@
   
   <entry>
     <title>网络最大流(EK)与(Dinic)</title>
-    <link href="http://www.scwyl.cn/2019/08/06/%E7%BD%91%E7%BB%9C%E6%B5%81(EK)%E4%B8%8E(Dinic)/"/>
-    <id>http://www.scwyl.cn/2019/08/06/网络流(EK)与(Dinic)/</id>
+    <link href="http://www.scwyl.cn/2019/08/06/EKandDinic/"/>
+    <id>http://www.scwyl.cn/2019/08/06/EKandDinic/</id>
     <published>2019-08-06T05:00:00.000Z</published>
     <updated>2019-08-06T07:08:55.756Z</updated>
     
@@ -225,8 +225,8 @@
   
   <entry>
     <title>DP例题</title>
-    <link href="http://www.scwyl.cn/2019/08/04/DP%E4%BE%8B%E9%A2%98/"/>
-    <id>http://www.scwyl.cn/2019/08/04/DP例题/</id>
+    <link href="http://www.scwyl.cn/2019/08/04/ExampleDP/"/>
+    <id>http://www.scwyl.cn/2019/08/04/ExampleDP/</id>
     <published>2019-08-04T15:30:00.000Z</published>
     <updated>2019-08-04T15:45:20.723Z</updated>
     
@@ -247,8 +247,8 @@
   
   <entry>
     <title>莫队</title>
-    <link href="http://www.scwyl.cn/2019/08/03/%E8%8E%AB%E9%98%9F/"/>
-    <id>http://www.scwyl.cn/2019/08/03/莫队/</id>
+    <link href="http://www.scwyl.cn/2019/08/03/MoTeam/"/>
+    <id>http://www.scwyl.cn/2019/08/03/MoTeam/</id>
     <published>2019-08-03T12:00:00.000Z</published>
     <updated>2019-08-04T15:14:48.001Z</updated>
     
@@ -269,8 +269,8 @@
   
   <entry>
     <title>最小生成树(kruskal)与(prim)</title>
-    <link href="http://www.scwyl.cn/2019/08/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
-    <id>http://www.scwyl.cn/2019/08/01/最小生成树/</id>
+    <link href="http://www.scwyl.cn/2019/08/01/MinTree/"/>
+    <id>http://www.scwyl.cn/2019/08/01/MinTree/</id>
     <published>2019-08-01T15:30:00.000Z</published>
     <updated>2019-08-03T09:35:49.676Z</updated>
     
@@ -313,8 +313,8 @@
   
   <entry>
     <title>离散化</title>
-    <link href="http://www.scwyl.cn/2019/07/28/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
-    <id>http://www.scwyl.cn/2019/07/28/离散化/</id>
+    <link href="http://www.scwyl.cn/2019/07/28/discretization/"/>
+    <id>http://www.scwyl.cn/2019/07/28/discretization/</id>
     <published>2019-07-28T12:00:00.000Z</published>
     <updated>2019-08-03T09:33:22.958Z</updated>
     
@@ -335,8 +335,8 @@
   
   <entry>
     <title>分块</title>
-    <link href="http://www.scwyl.cn/2019/07/28/%E5%88%86%E5%9D%97/"/>
-    <id>http://www.scwyl.cn/2019/07/28/分块/</id>
+    <link href="http://www.scwyl.cn/2019/07/28/Block/"/>
+    <id>http://www.scwyl.cn/2019/07/28/Block/</id>
     <published>2019-07-28T09:00:00.000Z</published>
     <updated>2019-08-03T09:37:37.737Z</updated>
     
@@ -401,8 +401,8 @@
   
   <entry>
     <title>区间DP</title>
-    <link href="http://www.scwyl.cn/2019/07/24/%E5%8C%BA%E9%97%B4DP/"/>
-    <id>http://www.scwyl.cn/2019/07/24/区间DP/</id>
+    <link href="http://www.scwyl.cn/2019/07/24/SectionDP/"/>
+    <id>http://www.scwyl.cn/2019/07/24/SectionDP/</id>
     <published>2019-07-24T15:30:00.000Z</published>
     <updated>2019-08-03T09:35:22.318Z</updated>
     
@@ -424,8 +424,8 @@
   
   <entry>
     <title>线性DP</title>
-    <link href="http://www.scwyl.cn/2019/07/24/%E7%BA%BF%E6%80%A7DP/"/>
-    <id>http://www.scwyl.cn/2019/07/24/线性DP/</id>
+    <link href="http://www.scwyl.cn/2019/07/24/linearDP/"/>
+    <id>http://www.scwyl.cn/2019/07/24/linearDP/</id>
     <published>2019-07-23T16:30:00.000Z</published>
     <updated>2019-08-03T09:34:33.290Z</updated>
     
