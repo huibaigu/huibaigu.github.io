@@ -220,6 +220,9 @@
         <div align="center" class="post-count">字数:975字||预计阅读时长:4分钟</div>
       </header>
     
+    
+          
+          
     <div class="article-entry" itemprop="articleBody">
       
         <p>最短路问题（short-path problem）是<a href="https://baike.baidu.com/item/网络理论/7566965" target="_blank" rel="noopener">网络理论</a>解决的典型问题之一，可用来解决管路铺设、线路安装、厂区布局和设备更新等实际问题。基本内容是：若网络中的每条边都有一个数值（长度、成本、时间等），则找出两节点（通常是源节点和阱节点）之间总权和最小的路径就是最短路问题。</p>
@@ -251,8 +254,6 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,dis;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node&amp;x)<span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> dis&gt;x.dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">node heap[n];</span><br><span class="line"><span class="keyword">int</span> hpi=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushheap</span><span class="params">(<span class="keyword">int</span> id,<span class="keyword">int</span> dis)</span><span class="comment">//把一个数据推进去</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    hpi++;<span class="comment">//指针移一位</span></span><br><span class="line">    heap[hpi].id=id;</span><br><span class="line">    heap[hpi].dis=dis;</span><br><span class="line">    push_heap(heap+<span class="number">1</span>,heap+hpi+<span class="number">1</span>);<span class="comment">//推进堆</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">popheap</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pop_heap(heap+<span class="number">1</span>,heap+hpi+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> ans=heap[hpi].id;</span><br><span class="line">    hpi--;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
-          
-          
           
       
       
@@ -571,11 +572,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">关于</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color3">推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,10 +597,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">推荐</a>
               </li>
              
               <li class="article-tag-list-item">
