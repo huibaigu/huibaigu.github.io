@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2019-09-28T12:35:10.024Z</updated>
+  <updated>2019-10-05T15:37:35.824Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>公告</title>
+    <link href="http://www.scwyl.cn/2019/10/06/gg/"/>
+    <id>http://www.scwyl.cn/2019/10/06/gg/</id>
+    <published>2019-10-05T16:10:00.000Z</published>
+    <updated>2019-10-05T15:37:35.824Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于比赛临近，本人从现在起到比赛结束都不会更新博客，<del>咕咕咕咕咕咕</del></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于比赛临近，本人从现在起到比赛结束都不会更新博客，&lt;del&gt;咕咕咕咕咕咕&lt;/del&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>最长递增子序列(LIS)与最长公共子序列(LCS)</title>
@@ -434,28 +452,6 @@
     
       &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;区间简单来说就是一坨；&lt;/p&gt;
 &lt;p&gt;区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性DP</title>
-    <link href="http://www.scwyl.cn/2019/07/24/linearDP/"/>
-    <id>http://www.scwyl.cn/2019/07/24/linearDP/</id>
-    <published>2019-07-23T16:30:00.000Z</published>
-    <updated>2019-08-03T09:34:33.290Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;</p><a id="more"></a><p>本次例题：<a href="https://www.luogu.org/problem/P1091" target="_blank" rel="noopener">合唱队形</a>,<a href="https://www.luogu.org/problem/P1020" target="_blank" rel="noopener">导弹拦截</a></p><p>当然，还有更难的题目：<a href="https://www.luogu.org/problem/P2487" target="_blank" rel="noopener">拦截导弹</a>，<a href="https://www.luogu.org/problem/P3205" target="_blank" rel="noopener">合唱队</a></p><h3 id="合唱队形"><a href="#合唱队形" class="headerlink" title="合唱队形"></a>合唱队形</h3><p>题目描述太过冗长，简单来说就是给你N个数，让你丢掉ans个数，使剩下的数符合↗↘的样式，求ans最小值；</p><p>分析：先求以每个数为结尾的最长升序，再求以每个数为开头的最长降序，最后挑个最大的，用n减去再加1(因为这数被减了2次)；</p><p>代码实现：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//求最长升</span></span><br><span class="line">&#123;</span><br><span class="line">dp[<span class="number">0</span>][i]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(a[i]&gt;a[j])dp[<span class="number">0</span>][i]=max(dp[<span class="number">0</span>][j]+<span class="number">1</span>,dp[<span class="number">0</span>][i]);</span><br><span class="line">        <span class="comment">//如果满足条件，以i结束的最长升=之前最长的+1</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)<span class="comment">//求最长降</span></span><br><span class="line">&#123;</span><br><span class="line">dp[n][i]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=n;j&gt;i;j--)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(a[i]&gt;a[j])dp[n][i]=max(dp[n][j]+<span class="number">1</span>,dp[n][i]);</span><br><span class="line">        <span class="comment">//如果满足条件，以i开始的最长降=之前最长的+1</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)sm=max(dp[n][i]+dp[<span class="number">0</span>][i]<span class="number">-1</span>,sm);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,n-sm);</span><br></pre></td></tr></table></figure><h3 id="导弹拦截"><a href="#导弹拦截" class="headerlink" title="导弹拦截"></a>导弹拦截</h3><p>emmm…看到这题，这奇葩的输入格式。。。快读啊！</p><p>快读，就是快速读入，是用getchar()拼出来的,下面给一个读入int的代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">    <span class="keyword">while</span>(s&gt;<span class="string">'9'</span>||s&lt;<span class="string">'0'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>) &#123;x=(x&lt;&lt;<span class="number">1</span>)+(x&lt;&lt;<span class="number">3</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> f*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但这题我们不能这么用，得改改</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> &amp;x)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s=getchar();</span><br><span class="line">    <span class="keyword">if</span>(s==EOF)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s&gt;<span class="string">'9'</span>||s&lt;<span class="string">'0'</span>)s=getchar();</span><br><span class="line">    <span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>) &#123;x=(x&lt;&lt;<span class="number">1</span>)+(x&lt;&lt;<span class="number">3</span>)+(s^<span class="number">48</span>);s=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>先一问一问的看</p><p>第一问让我们求最长下降序列，很简单,由于数据量比较大，我们得用n*logn的办法；</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> pos=upper_bound(f+<span class="number">1</span>,f+<span class="number">1</span>+k,a[i],greater&lt;<span class="keyword">int</span>&gt;())-f;</span><br><span class="line">    <span class="comment">//这里求出的pos表示f[pos]&lt;=a[i];</span></span><br><span class="line">    <span class="keyword">if</span>(f[k]&gt;=a[i])</span><br><span class="line">    &#123;</span><br><span class="line">        f[++k]=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        f[pos]=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,k);</span><br></pre></td></tr></table></figure><p>第二问</p><p>代码很简单，也可以参照第一问用lower_bound解决：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ff[<span class="number">0</span>]=<span class="number">50001</span><span class="comment">//设为最大高度+1；</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">register</span> h=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=js;j++)<span class="comment">//让所有系统都去试试</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ff[j]&gt;=a[i]&amp;&amp;ff[j]&lt;ff[h])<span class="comment">//贪心思想</span></span><br><span class="line">        &#123;</span><br><span class="line">            h=j;<span class="comment">//把这套系统的序号记录下</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(h==<span class="number">0</span>)ff[++js]=a[i];<span class="comment">//只要a[i]没有被之前的系统拦住，就新建一系统</span></span><br><span class="line">    <span class="keyword">else</span> ff[h]=a[i];<span class="comment">//拦住了，就把拦住a[i]的那系统高度降低</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,js);<span class="comment">//输出计数</span></span><br></pre></td></tr></table></figure><p>有不懂的可以下面问我</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;线性动规就是说所有数据的关系排列起来像一条线，如：123456，f[i]=f[i-1]+1;&lt;/p&gt;
     
     </summary>
     
