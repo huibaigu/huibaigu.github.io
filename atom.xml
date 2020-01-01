@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2020-01-01T10:34:15.155Z</updated>
+  <updated>2020-01-01T11:41:25.464Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sqlite</title>
+    <link href="http://www.scwyl.cn/2020/01/01/sqlite/"/>
+    <id>http://www.scwyl.cn/2020/01/01/sqlite/</id>
+    <published>2020-01-01T11:30:00.000Z</published>
+    <updated>2020-01-01T11:41:25.464Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="C#" scheme="http://www.scwyl.cn/categories/C/"/>
+    
+    
+      <category term="数据库" scheme="http://www.scwyl.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>公告</title>
@@ -429,29 +454,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;背包问题分为6种(还有更多)，之外的“有依赖的背包问题”可以展开当成分组背包做如：&lt;a href=&quot;https://www.luogu.org/problem/P1064&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;金明的预算方案&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://www.scwyl.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="动态规划" scheme="http://www.scwyl.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>区间DP</title>
-    <link href="http://www.scwyl.cn/2019/07/24/SectionDP/"/>
-    <id>http://www.scwyl.cn/2019/07/24/SectionDP/</id>
-    <published>2019-07-24T15:30:00.000Z</published>
-    <updated>2019-08-03T09:35:22.318Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>区间简单来说就是一坨；</p><p>区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。</p><a id="more"></a><p><a href="https://www.luogu.org/space/show?uid=110871" target="_blank" rel="noopener">我的洛谷</a>,求一波关注。。。</p><p>本次例题：<a href="https://www.luogu.org/problem/P1005" target="_blank" rel="noopener">矩阵取数游戏</a></p><p>对于一个给定的<em>n</em>×<em>m</em>的矩阵</p><ol><li>每次取数时须从每行各取走一个元素，共<em>n</em>个。经过<em>m</em>次后取完矩阵内所有元素；</li><li>每次取走的各个元素只能是该元素所在行的行首或行尾；</li><li>每次取数都有一个得分值，为每行取数的得分之和，每行取数的得分 = 被取走的元素值2^<em>i</em>，其中<em>i</em>表示第<em>i</em>次取数（从1开始编号）；</li><li>游戏结束总得分为<em>m</em>次取数得分之和。<br>最后输出最大得分</li></ol><div class="table-container"><table><thead><tr><th>输入</th><th>输出</th></tr></thead><tbody><tr><td>2 3<br>1 2 3<br>3 4 2</td><td>82</td></tr><tr><td>1 4<br>4 5 0 5</td><td>122</td></tr><tr><td>2 10<br>96 56 54 46 86 12 23 88 80 43<br>16 95 18 29 30 53 88 83 64 67</td><td>316994</td></tr></tbody></table></div><p>以上有三组样例。</p><p>数据范围说是最大是80*80的矩阵，每个数小于1000，2^80会超过longlong,所以我们用2个longlong拼接</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000000000000<span class="comment">//1后面15个0</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">int127</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> G,D;<span class="comment">//高位，低位</span></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>((G&lt;x.G)||(G==x.G&amp;&amp;D&lt;x.D))<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//小就返回1</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &gt; (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>((G&gt;x.G)||(G==x.G&amp;&amp;D&gt;x.D))<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//小就返回1</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">int127 <span class="keyword">operator</span> + (<span class="keyword">const</span> int127&amp;x)<span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">int127 ans;</span><br><span class="line">ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">ans.G=G+x.G+(x.D+D)/mod;</span><br><span class="line">ans.D=(x.D+D)%mod;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">int127 <span class="keyword">operator</span> + (<span class="keyword">const</span> <span class="keyword">int</span>&amp;x)<span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">int127 ans;</span><br><span class="line">ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">ans.G=G+(x+D)/mod;</span><br><span class="line">ans.D=(x+D)%mod;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">int127 <span class="keyword">operator</span> * (<span class="keyword">const</span> <span class="keyword">int</span>&amp;x)<span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">int127 ans;</span><br><span class="line">ans.G=<span class="number">0</span>;ans.D=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">ans.G=x*G+x*D/mod;</span><br><span class="line">ans.D=(x*D)%mod;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">int127 k,anser,f[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//k为2^i,anser为最后答案,f为DP数组</span></span><br><span class="line"><span class="keyword">int</span> n,m,dt[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f));<span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;dt[j]);<span class="comment">//读一行处理一行</span></span><br><span class="line">k.D=<span class="number">1</span>;</span><br><span class="line">k.G=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=m;l&gt;<span class="number">0</span>;l--)<span class="comment">//慢慢缩小范围，从取最后一个数推到取第一个数</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;=l;a++)k=k*<span class="number">2</span>;<span class="comment">//2^i</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> o=<span class="number">1</span>;o&lt;=l;o++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> j=m-l+o;<span class="comment">//区间大小为m-l</span></span><br><span class="line">f[o][j]=max(f[o][j<span class="number">-1</span>]+k*dt[j],f[o+<span class="number">1</span>][j]+k*dt[o]);</span><br><span class="line"><span class="comment">//区间[o,j]的分数=max(区间[o,j-1]的分加上这一次取dt[j]的分，区间[o+1,j]的分加上这一次取dt[o]的分)</span></span><br><span class="line"><span class="comment">//这一次的分数=上一次的分数加上最左边与最右边；</span></span><br><span class="line"><span class="comment">//具体就这意思，可能这次例题弄得比较难，不容易理解，多刷些题，慢慢会有感觉的</span></span><br><span class="line">&#125;</span><br><span class="line">k.D=<span class="number">1</span>;</span><br><span class="line">k.G=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">&#125;</span><br><span class="line">  anser=anser+f[<span class="number">1</span>][m];<span class="comment">//加上最大值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(anser.G==<span class="number">0</span>)<span class="built_in">printf</span>(<span class="string">"%lld"</span>,anser.D);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld%lld"</span>,anser.G,anser.D);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="其他例题"><a href="#其他例题" class="headerlink" title="其他例题"></a>其他例题</h6><p><a href="https://www.luogu.org/problem/P1880" target="_blank" rel="noopener">石子合并</a></p><p><a href="https://www.luogu.org/problem/P1040" target="_blank" rel="noopener">加分二叉树</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;区间简单来说就是一坨；&lt;/p&gt;
-&lt;p&gt;区间DP就是当前这一坨(与之前那一坨的关系)或者(与之后那一坨的关系)。&lt;/p&gt;
     
     </summary>
     
