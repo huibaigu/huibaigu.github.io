@@ -23,14 +23,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="下载DLL—-System.Data.SQLite.dll（必需，仅托管核心程序集）—-System.Data.SQLite.Linq.dll（可选，仅托管LINQ程序集）—-System.Data.SQLite.EF6.dll（可选，仅托管EF6程序集）—-x86 \ SQLite.Interop.dll（必需，x86本机互操作程序集）—-x64 \ SQLite.Interop.dll（必需，">
-<meta name="keywords" content="数据库">
+<meta name="keywords" content="sqlite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sqlite">
-<meta property="og:url" content="http://www.scwyl.cn/2020/01/01/sqlite/index.html">
+<meta property="og:url" content="http://www.scwyl.cn/2020/01/04/sqlite/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
 <meta property="og:description" content="下载DLL—-System.Data.SQLite.dll（必需，仅托管核心程序集）—-System.Data.SQLite.Linq.dll（可选，仅托管LINQ程序集）—-System.Data.SQLite.EF6.dll（可选，仅托管EF6程序集）—-x86 \ SQLite.Interop.dll（必需，x86本机互操作程序集）—-x64 \ SQLite.Interop.dll（必需，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-01T14:40:42.241Z">
+<meta property="og:updated_time" content="2020-01-04T10:46:19.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlite">
 <meta name="twitter:description" content="下载DLL—-System.Data.SQLite.dll（必需，仅托管核心程序集）—-System.Data.SQLite.Linq.dll（可选，仅托管LINQ程序集）—-System.Data.SQLite.EF6.dll（可选，仅托管EF6程序集）—-x86 \ SQLite.Interop.dll（必需，x86本机互操作程序集）—-x64 \ SQLite.Interop.dll（必需，">
@@ -90,7 +90,7 @@
 		  <h1 class="header-author"><a href="/">灰白骨</a></h1>
 		</hgroup>
 		
-    博客全站共<span class="post-count">27.5k字</span>
+    博客全站共<span class="post-count">27.9k字</span>
 
 		<nav class="header-menu">
 			<ul>
@@ -220,11 +220,11 @@
   
 
         
-        <a href="/2020/01/01/sqlite/" class="archive-article-date">
-  	<time datetime="2020-01-01T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/01/04/sqlite/" class="archive-article-date">
+  	<time datetime="2020-01-04T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
 </a>
         
-        <div align="center" class="post-count">字数:596字||预计阅读时长:2分钟</div>
+        <div align="center" class="post-count">字数:999字||预计阅读时长:4分钟</div>
       </header>
     
 
@@ -241,15 +241,26 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="/document/sqlite.rar">下载DLL</a><br>—-System.Data.SQLite.dll（必需，仅托管核心程序集）<br>—-System.Data.SQLite.Linq.dll（可选，仅托管LINQ程序集）<br>—-System.Data.SQLite.EF6.dll（可选，仅托管EF6程序集）<br>—-x86 \ SQLite.Interop.dll（必需，x86本机互操作程序集）<br>—-x64 \ SQLite.Interop.dll（必需，x64本机互操作程序集）<br><a href="/document/SQLiteSpy.rar">可视化管理工具</a><br><a id="more"></a><br>用的时候直接引用就是了，下面我写的都是C#</p>
-<h5 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ThisSQLiteConnection = new SQLiteConnection(@&quot;DataSource=C:\\data\\data.db&quot;);//设置新连接</span><br><span class="line">                SQLiteCommand cmd = new SQLiteCommand();//新建</span><br><span class="line">                cmd.Connection = ThisSQLiteConnection;//设置数据库</span><br><span class="line">                ThisSQLiteConnection.Open();//打开</span><br><span class="line">                cmd.CommandText = &quot;create table 表名(列名1 列属性1,列名2 列属性2)&quot;;//设置命令</span><br><span class="line">                cmd.ExecuteNonQuery();//执行命令</span><br><span class="line">				ThisSQLiteConnection.close();//关闭</span><br></pre></td></tr></table></figure>
-<h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = &quot;insert into 表名 (列名1 ,列名2) values(&apos;列1值&apos;，&apos;列2值&apos;)&quot;;//设置命令</span><br></pre></td></tr></table></figure>
-<h5 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = &quot;update 表名 set 列名1 = &apos;列1值&apos; 条件&quot;;//设置命令，让满足条件的项，它的列1改为列1值</span><br></pre></td></tr></table></figure>
-<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = &quot;delete from 表名 条件&quot;;//设置命令，删除满足条件的项</span><br></pre></td></tr></table></figure>
-<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = &quot;select * FROM 表名 条件&quot;;//设置命令，返回满足条件的项</span><br></pre></td></tr></table></figure>
-<p>当只需要其中的列1和列2时，可改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = &quot;select 列1,列2 FROM 表名 条件&quot;;//设置命令，返回满足条件的项</span><br></pre></td></tr></table></figure>
-<h4 id="列属性"><a href="#列属性" class="headerlink" title="列属性"></a>列属性</h4><div class="table-container">
+        <p><a href="/document/sqlite.rar">下载DLL</a><br>—-System.Data.SQLite.dll（必需，仅托管核心程序集）<br>—-System.Data.SQLite.Linq.dll（可选，仅托管LINQ程序集）<br>—-System.Data.SQLite.EF6.dll（可选，仅托管EF6程序集）<br>—-x86 \ SQLite.Interop.dll（必需，x86本机互操作程序集）<br>—-x64 \ SQLite.Interop.dll（必需，x64本机互操作程序集）<br><a href="/document/SQLiteSpy.rar">可视化管理工具</a><br><a id="more"></a></p>
+<h3 id="sqlite语法"><a href="#sqlite语法" class="headerlink" title="sqlite语法"></a>sqlite语法</h3><h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE database_name.table_name(column1 datatype,column2 datatype,column3 datatype,.....columnN datatype,)</span><br></pre></td></tr></table></figure>
+<p>CREATE TABLE 是告诉数据库系统创建一个新表的关键字。CREATE TABLE 语句后跟着表的唯一的名称或标识。你也可以选择指定带有 <em>table_name</em> 的 <em>database_name</em>。</p>
+<h5 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE database_name.table_name</span><br></pre></td></tr></table></figure>
+<h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  VALUES (value1, value2, value3,...valueN)</span><br></pre></td></tr></table></figure>
+<p>在这里，column1, column2,…columnN 是要插入数据的表中的列的名称。</p>
+<p>如果要为表中的所有列添加值，你也可以不需要在 SQLite 查询中指定列名称。但要确保值的顺序与列在表中的顺序一致。SQLite 的 INSERT INTO 语法如下：</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE<span class="number">_</span>NAME VALUES (<span class="keyword">value</span><span class="number">1</span>,<span class="keyword">value</span><span class="number">2</span>,<span class="keyword">value</span><span class="number">3</span>,...valueN)</span><br></pre></td></tr></table></figure>
+<h5 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h5><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2, columnN <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> [condition]</span><br></pre></td></tr></table></figure>
+<p>在这里，column1, column2…是表的字段，他们的值即是你要获取的。如果你想获取所有可用的字段，那么可以使用下面的语法：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> [condition]</span><br></pre></td></tr></table></figure>
+<h5 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h5><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_nameSET <span class="attr">column1</span> = value1, <span class="attr">column2</span> = value2...., <span class="attr">columnN</span> = valueN WHERE [condition]</span><br></pre></td></tr></table></figure>
+<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> [condition]</span><br></pre></td></tr></table></figure>
+<h5 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h5><p>其表示当WHERE以后的条件满足时，可以执行查改删这条数据，你可以使用 AND 或 OR 运算符来结合 N 个数量的条件。</p>
+<h5 id="AND-OR"><a href="#AND-OR" class="headerlink" title="AND/OR"></a>AND/OR</h5><p><strong>AND</strong> 运算符允许在一个 SQL 语句的 WHERE 子句中的多个条件的存在。使用 AND 运算符时，只有当所有条件都为真（true）时，整个条件为真（true）。例如，只有当 condition1 和 condition2 都为真（true）时，[condition1] AND [condition2] 为真（true）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">WHERE</span> <span class="selector-attr">[condition1]</span> <span class="selector-tag">AND</span> <span class="selector-attr">[condition2]</span>..<span class="selector-class">.AND</span> <span class="selector-attr">[conditionN]</span></span><br></pre></td></tr></table></figure>
+<p><strong>OR</strong> 运算符也用于结合一个 SQL 语句的 WHERE 子句中的多个条件。使用 OR 运算符时，只要当条件中任何一个为真（true）时，整个条件为真（true）。例如，只要当 condition1 或 condition2 有一个为真（true）时，[condition1] OR [condition2] 为真（true）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">WHERE</span> <span class="selector-attr">[condition1]</span> <span class="selector-tag">OR</span> <span class="selector-attr">[condition2]</span>..<span class="selector-class">.OR</span> <span class="selector-attr">[conditionN]</span></span><br></pre></td></tr></table></figure>
+<p><strong>一起使用时，注意需要加括号</strong></p>
+<h5 id="DataType"><a href="#DataType" class="headerlink" title="DataType"></a>DataType</h5><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -286,8 +297,17 @@
 </tbody>
 </table>
 </div>
-<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><p>条件都会用到”where 某某1=某某2 and(某某3&gt;某某4 or 某某5&lt;某某6)”//表示”当某某1=某某2 and(某某3&gt;某某4 or 某某5&lt;某某6)”满足时，条件成立；否则不成立。</p>
-<h4 id="关于查询到的数据的处理"><a href="#关于查询到的数据的处理" class="headerlink" title="关于查询到的数据的处理"></a>关于查询到的数据的处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDataReader dReader = cmd.ExecuteReader(); </span><br><span class="line">DataTable dTable = new DataTable();</span><br><span class="line">dTable.Load(dReader); </span><br><span class="line">string data = dTable.Rows[0][&quot;列名&quot;].ToString();</span><br></pre></td></tr></table></figure>
+<h3 id="sqlite与c-相关"><a href="#sqlite与c-相关" class="headerlink" title="sqlite与c#相关"></a>sqlite与c#相关</h3><p>用的时候直接引用就是了，下面我写的都是C#</p>
+<p>用的时候直接引用就是了，下面我写的都是C#</p>
+<h5 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ThisSQLiteConnection = <span class="keyword">new</span> SQLiteConnection(<span class="string">@"DataSource=C:\\data\\data.db"</span>);<span class="comment">//设置新连接</span></span><br><span class="line">                SQLiteCommand cmd = <span class="keyword">new</span> SQLiteCommand();<span class="comment">//新建</span></span><br><span class="line">                cmd.Connection = ThisSQLiteConnection;<span class="comment">//设置数据库</span></span><br><span class="line">                ThisSQLiteConnection.Open();<span class="comment">//打开</span></span><br><span class="line">                cmd.CommandText = <span class="string">"create table 表名(列名1 列属性1,列名2 列属性2)"</span>;<span class="comment">//设置命令</span></span><br><span class="line">                cmd.ExecuteNonQuery();<span class="comment">//执行命令</span></span><br><span class="line">				ThisSQLiteConnection.close();<span class="comment">//关闭</span></span><br></pre></td></tr></table></figure>
+<h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = <span class="string">"insert into 表名 (列名1 ,列名2) values('列1值'，'列2值')"</span>;<span class="comment">//设置命令</span></span><br></pre></td></tr></table></figure>
+<h5 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = <span class="string">"update 表名 set 列名1 = '列1值' 条件"</span>;<span class="comment">//设置命令，让满足条件的项，它的列1改为列1值</span></span><br></pre></td></tr></table></figure>
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = <span class="string">"delete from 表名 条件"</span>;<span class="comment">//设置命令，删除满足条件的项</span></span><br></pre></td></tr></table></figure>
+<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = <span class="string">"select * FROM 表名 条件"</span>;<span class="comment">//设置命令，返回满足条件的项</span></span><br></pre></td></tr></table></figure>
+<p>当只需要其中的列1和列2时，可改为</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd.CommandText = <span class="string">"select 列1,列2 FROM 表名 条件"</span>;<span class="comment">//设置命令，返回满足条件的项</span></span><br></pre></td></tr></table></figure>
+<p>关于查询到的数据的处理</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDataReader dReader = cmd.ExecuteReader(); </span><br><span class="line">DataTable dTable = <span class="keyword">new</span> DataTable();</span><br><span class="line">dTable.Load(dReader); </span><br><span class="line"><span class="keyword">string</span> data = dTable.Rows[<span class="number">0</span>][<span class="string">"列名"</span>].ToString();</span><br></pre></td></tr></table></figure>
 
       
           
@@ -300,7 +320,7 @@
           
           <br>
           <strong>本文链接：</strong>
-          http://www.scwyl.cn/2020/01/01/sqlite/
+          http://www.scwyl.cn/2020/01/04/sqlite/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -323,7 +343,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">sqlite</a>
         		</li>
       		
 		</ul>
@@ -335,7 +355,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
+        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -400,7 +420,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接"><span class="toc-number">1.</span> <span class="toc-text">连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入"><span class="toc-number">2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改"><span class="toc-number">3.</span> <span class="toc-text">修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除"><span class="toc-number">4.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查找"><span class="toc-number">5.</span> <span class="toc-text">查找</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列属性"><span class="toc-number"></span> <span class="toc-text">列属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#条件"><span class="toc-number"></span> <span class="toc-text">条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于查询到的数据的处理"><span class="toc-number"></span> <span class="toc-text">关于查询到的数据的处理</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlite语法"><span class="toc-number">1.</span> <span class="toc-text">sqlite语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建表"><span class="toc-number">1.0.1.</span> <span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除表"><span class="toc-number">1.0.2.</span> <span class="toc-text">删除表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加数据"><span class="toc-number">1.0.3.</span> <span class="toc-text">添加数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查询数据"><span class="toc-number">1.0.4.</span> <span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改数据"><span class="toc-number">1.0.5.</span> <span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数据"><span class="toc-number">1.0.6.</span> <span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WHERE"><span class="toc-number">1.0.7.</span> <span class="toc-text">WHERE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AND-OR"><span class="toc-number">1.0.8.</span> <span class="toc-text">AND/OR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DataType"><span class="toc-number">1.0.9.</span> <span class="toc-text">DataType</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlite与c-相关"><span class="toc-number">2.</span> <span class="toc-text">sqlite与c#相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接"><span class="toc-number">2.0.1.</span> <span class="toc-text">连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入"><span class="toc-number">2.0.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改"><span class="toc-number">2.0.3.</span> <span class="toc-text">修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除"><span class="toc-number">2.0.4.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查找"><span class="toc-number">2.0.5.</span> <span class="toc-text">查找</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -435,7 +455,7 @@ if(true){
   	repo: 'huibaigu.github.io',
   	owner: 'huibaigu',
   	admin: ['huibaigu'],
-  	id: 'Wed Jan 01 2020 22:30:00 GMT+0800',
+  	id: 'Sat Jan 04 2020 22:30:00 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -587,15 +607,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">网络流</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">LIS,LCS</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +619,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">关于</a>
+                <a href="javascript:void(0)" class="js-tag color3">LIS,LCS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
+                <a href="javascript:void(0)" class="js-tag color3">关于</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,7 +635,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">离散化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +643,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+                <a href="javascript:void(0)" class="js-tag color2">sqlite</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tarjan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,11 +655,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">概率</a>
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tarjan</a>
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">概率</a>
               </li>
              
               <li class="article-tag-list-item">
