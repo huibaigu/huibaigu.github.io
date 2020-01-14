@@ -50,6 +50,24 @@
   </entry>
   
   <entry>
+    <title>公告</title>
+    <link href="http://www.scwyl.cn/2020/01/12/gg/"/>
+    <id>http://www.scwyl.cn/2020/01/12/gg/</id>
+    <published>2020-01-12T07:32:00.000Z</published>
+    <updated>2020-01-14T03:42:19.692Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>评论系统会在新年前修复，广告不显示还不知原因，</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;评论系统会在新年前修复，广告不显示还不知原因，&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>sqlite</title>
     <link href="http://www.scwyl.cn/2020/01/04/sqlite/"/>
     <id>http://www.scwyl.cn/2020/01/04/sqlite/</id>
@@ -68,24 +86,6 @@
     
     
       <category term="sqlite" scheme="http://www.scwyl.cn/tags/sqlite/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>公告</title>
-    <link href="http://www.scwyl.cn/2020/01/01/gg/"/>
-    <id>http://www.scwyl.cn/2020/01/01/gg/</id>
-    <published>2020-01-01T10:32:00.000Z</published>
-    <updated>2020-01-01T10:34:15.155Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>嗯，新年快乐，时隔几个月，终于更新了，算是退役了吧，以后等上了大学，我会去打ACM的，现在主要高考，这期间，我会更新的，不会咕咕咕。。。。</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;嗯，新年快乐，时隔几个月，终于更新了，算是退役了吧，以后等上了大学，我会去打ACM的，现在主要高考，这期间，我会更新的，不会咕咕咕。。。。&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
