@@ -15,17 +15,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.scwyl.cn">
 
-  <title>Category: 目录 | 灰白骨的blog</title>
+  <title>Linux中安装NET core | 灰白骨的blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="灰白骨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="灰白骨的blog">
-<meta property="og:url" content="http://www.scwyl.cn/categories/目录/index.html">
+  <meta name="description" content="VM中安装 LinuxUbuntu Kali CenterOS">
+<meta name="keywords" content=".Net core,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux中安装NET core">
+<meta property="og:url" content="http://www.scwyl.cn/2020/02/03/NET core/index.html">
 <meta property="og:site_name" content="灰白骨的blog">
+<meta property="og:description" content="VM中安装 LinuxUbuntu Kali CenterOS">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.scwyl.cn/images/Netcore.jpg">
+<meta property="og:updated_time" content="2020-02-03T10:57:54.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰白骨的blog">
+<meta name="twitter:title" content="Linux中安装NET core">
+<meta name="twitter:description" content="VM中安装 LinuxUbuntu Kali CenterOS">
+<meta name="twitter:image" content="http://www.scwyl.cn/images/Netcore.jpg">
   
     <link rel="alternative" href="/atom.xml" title="灰白骨的blog" type="application/atom+xml">
   
@@ -239,71 +245,199 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-NET core" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/简述动态规划/" class="archive-article-date">
-  	<time datetime="2019-07-22T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/简述动态规划/">简述动态规划</a>
+    <h1 class="article-title" itemprop="name">
+      Linux中安装NET core
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2020/02/03/NET core/" class="archive-article-date">
+  	<time datetime="2020-02-03T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-03</time>
+</a>
+        
+        <div align="center" class="post-count">字数:176字||预计阅读时长:1分钟</div>
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="VM中安装-Linux"><a href="#VM中安装-Linux" class="headerlink" title="VM中安装 Linux"></a>VM中安装 Linux</h3><p><a href="https://jingyan.baidu.com/article/5d368d1ec381fe3f60c0572a.html" target="_blank" rel="noopener">Ubuntu</a></p>
+<p><a href="https://jingyan.baidu.com/article/922554467079c8851648f4d7.html" target="_blank" rel="noopener">Kali</a></p>
+<p><a href="https://jingyan.baidu.com/article/eae0782787b4c01fec548535.html" target="_blank" rel="noopener">CenterOS</a><br><a id="more"></a></p>
+<h3 id="在Linux中安装-Net-core环境"><a href="#在Linux中安装-Net-core环境" class="headerlink" title="在Linux中安装.Net core环境"></a>在Linux中安装.Net core环境</h3><p><a href="https://docs.microsoft.com/zh-cn/dotnet/core/install/" target="_blank" rel="noopener">微软文档</a></p>
+<p>去上面的连接，然后在左侧点击“Linux包管理器”选择你的系统根据步骤来，如果还有问题就去百度</p>
+<h3 id="在Linux中运行程序"><a href="#在Linux中运行程序" class="headerlink" title="在Linux中运行程序"></a>在Linux中运行程序</h3><p><img src="/images/Netcore.jpg" alt></p>
+<p>遇到图示问题，可以在.csproj文件里面加入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;PublishWithAspNetCoreTargetManifest&gt;false&lt;/PublishWithAspNetCoreTargetManifest&gt;</span><br></pre></td></tr></table></figure>
+<p>如果还是不行，可以去NuGet里安装了需要的文件，如图，我需要安装”Microsoft.Win32.SystemEvents”的”4.7.0”版本，安装完后编译就可以运行了。</p>
+<p>运行到自己编写的库时，这里要用.net core 下编写的库，不要使用其他的库</p>
+<p>关于引用第三方库<a href="https://blog.csdn.net/weixin_33948416/article/details/93280128" target="_blank" rel="noopener">链接</a></p>
+
+      
           
+      
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
+          
+            灰白骨
+          
+          <br>
+          <strong>本文链接：</strong>
+          http://www.scwyl.cn/2020/02/03/NET core/
+          <br>
+          <strong>版权声明：</strong>
+          本作品采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+          进行许可。转载请注明出处！
+          
+            <br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+          
+        </div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">.Net core</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/目录//" class="article-tag-list-link color3">目录</a>
+        			<a href="/categories/项目//" class="article-tag-list-link color3">项目</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+        <div id="wpac-rating"></div>
+<script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id:  20382});
+  (function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  mc.src = 'https://embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+</script>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/01/19/gg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">公告</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#VM中安装-Linux"><span class="toc-number">1.</span> <span class="toc-text">VM中安装 Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Linux中安装-Net-core环境"><span class="toc-number">2.</span> <span class="toc-text">在Linux中安装.Net core环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Linux中运行程序"><span class="toc-number">3.</span> <span class="toc-text">在Linux中运行程序</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  if(true){
+	  var gitalk = new Gitalk({
+  	clientID: 'd835e15585d9970ef6b3',
+  	clientSecret: 'a0e18f21bf22493fe87b684be6531aa7e72cbda9',
+  	repo: 'huibaigu.github.io',
+  	owner: 'huibaigu',
+  	admin: ['huibaigu'],
+  	id: 'Mon Feb 03 2020 18:00:00 GMT+0800',
+  	distractionFreeMode: 'true'
+    createIssueManually: ''
+    })
+    gitalk.render('gitalk-container')
+  }
+  </script>
+
+  
+
 
 
           </div>
@@ -377,10 +511,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
