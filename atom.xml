@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2020-03-02T12:10:01.543Z</updated>
+  <updated>2020-03-02T12:21:37.096Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.scwyl.cn/2020/03/02/project/"/>
     <id>http://www.scwyl.cn/2020/03/02/project/</id>
     <published>2020-03-02T12:10:00.000Z</published>
-    <updated>2020-03-02T12:10:01.543Z</updated>
+    <updated>2020-03-02T12:21:37.096Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这里会出现我立的flag,当前flag数量:1,<del>内容及其中二</del></p><a id="more"></a><h3 id="项目编号-T-001"><a href="#项目编号-T-001" class="headerlink" title="项目编号 T-001"></a>项目编号 T-001</h3><h5 id="项目名称-二次元厨"><a href="#项目名称-二次元厨" class="headerlink" title="项目名称:二次元厨"></a>项目名称:二次元厨</h5><h5 id="项目等级-Keter"><a href="#项目等级-Keter" class="headerlink" title="项目等级:Keter"></a>项目等级:Keter</h5><h5 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h5><p>T-001表现为一个网站，网站大致内容如下<br><img src="/images/T-001.png" alt><br>T-001准备于2021年7月16日开始建设，使用不限于以下语言：javascript,html,css。<br>T-001使用Vscode,Dream weaver,HBuilder,WebStorm软件<br>T-001准备于2022年7月16日测试发布(或许),为期1年</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这里会出现我立的flag,当前flag数量:1,<del>内容及其中二</del></p><a id="more"></a><h1 id="项目编号-T-001"><a href="#项目编号-T-001" class="headerlink" title="项目编号 T-001"></a>项目编号 T-001</h1><h3 id="项目名称-二次元厨"><a href="#项目名称-二次元厨" class="headerlink" title="项目名称:二次元厨"></a>项目名称:二次元厨</h3><h3 id="项目等级-Keter"><a href="#项目等级-Keter" class="headerlink" title="项目等级:Keter"></a>项目等级:Keter</h3><h3 id="描述"><a href="#描述" class="headerlink" title="描述:"></a>描述:</h3><p>T-001表现为一个网站，网站大致内容如下<br><img src="/images/T-001.png" alt><br>T-001准备于2021年7月16日开始建设，使用不限于以下语言：javascript,html,css。<br>T-001使用Vscode,Dream weaver,HBuilder,WebStorm软件<br>T-001准备于2022年7月16日测试发布(或许),为期1年</p><h3 id="项目状态-未开始"><a href="#项目状态-未开始" class="headerlink" title="项目状态:未开始"></a>项目状态:未开始</h3>]]></content>
     
     <summary type="html">
     
@@ -69,15 +69,14 @@
     <link href="http://www.scwyl.cn/2020/01/19/gg/"/>
     <id>http://www.scwyl.cn/2020/01/19/gg/</id>
     <published>2020-01-19T07:32:00.000Z</published>
-    <updated>2020-01-19T07:24:16.445Z</updated>
+    <updated>2020-03-02T12:20:16.413Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>评论系统会在新年前修复。</p><p>广告不显示是谷歌的平邮收不到，没法验证地址，只有等申请3次后的人工审核了，预计3月底可以显示出广告。</p><p>成功在指定页面设置广告链接(现在还没给我广告，没法显示)。。。除了主页和左侧地址没有，花了3，4个小时。。。</p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>评论系统会在XX年前修复。—-因为没什么人，所以暂时不准备开启</p><p>广告不显示是谷歌的平邮收不到，没法验证地址，只有等申请3次后的人工审核了，预计3月底可以显示出广告，广告会用来维持网站。。。</p><a id="more"></a>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;评论系统会在新年前修复。&lt;/p&gt;
-&lt;p&gt;广告不显示是谷歌的平邮收不到，没法验证地址，只有等申请3次后的人工审核了，预计3月底可以显示出广告。&lt;/p&gt;
-&lt;p&gt;成功在指定页面设置广告链接(现在还没给我广告，没法显示)。。。除了主页和左侧地址没有，花了3，4个小时。。。&lt;/p&gt;
+      &lt;p&gt;评论系统会在XX年前修复。—-因为没什么人，所以暂时不准备开启&lt;/p&gt;
+&lt;p&gt;广告不显示是谷歌的平邮收不到，没法验证地址，只有等申请3次后的人工审核了，预计3月底可以显示出广告，广告会用来维持网站。。。&lt;/p&gt;
     
     </summary>
     
