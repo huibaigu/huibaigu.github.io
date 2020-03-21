@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.scwyl.cn/"/>
-  <updated>2020-03-15T05:26:44.665Z</updated>
+  <updated>2020-03-21T12:25:20.461Z</updated>
   <id>http://www.scwyl.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.scwyl.cn/2020/03/15/pic/"/>
     <id>http://www.scwyl.cn/2020/03/15/pic/</id>
     <published>2020-03-15T05:00:00.000Z</published>
-    <updated>2020-03-15T05:26:44.665Z</updated>
+    <updated>2020-03-21T12:25:20.461Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>满脑子奇怪的想法。。这次弄了个按钮可以随机得到一张图片</p><input type="button" value="随机壁纸" onclick="toBooks()"><script type="text/javascript">​        function toBooks() {​            window.open("http://www.scwyl.cn/none/pic.html");​        }</script><p>最开始我想的是在每一页的左边添加一个按钮，但是发现添加后每一页会多出50K的大小，放弃。</p><p>改进：通过按钮下按钮跳转到一个中转页面，通过中转页面来随机得到图片，这样文件大小就会小很多，图床用的是moetu.org.</p><p>图可以免费分享，要的可以通过左侧的联系方式告诉我，想要加入图片可以给我链接或者图片，我会加进去的</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>满脑子奇怪的想法。。这次弄了个按钮可以随机得到一张图片</p><input type="button" value="随机壁纸" onclick="toBooks()"><script type="text/javascript">​        function toBooks() {​            window.open("http://ciyuan.scwyl.cn/random");​        }</script><p>最开始我想的是在每一页的左边添加一个按钮，但是发现添加后每一页会多出50K的大小，放弃。</p><p>改进：通过按钮下按钮跳转到一个中转页面，通过中转页面来随机得到图片，这样文件大小就会小很多，图床用的是moetu.org.</p><p>图可以免费分享，要的可以通过左侧的联系方式告诉我，想要加入图片可以给我链接或者图片，我会加进去的</p>]]></content>
     
     <summary type="html">
     
